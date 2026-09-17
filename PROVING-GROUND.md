@@ -66,3 +66,20 @@ permission to pull-request packaging.
 inherits caller permissions; branch and pull-request callers grant only
 `contents: read`, while tag release callers grant `contents: write`. This
 repository pins both the reusable workflow and Jaunder binary to that commit.
+
+## 2026-09-17: public-control contrast
+
+**Observed Theme failure:** the first installed workflow artifact passed package
+validation but failed the route-level WCAG scan. Its broad authored `a` rule
+recolored Jaunder's Register control while retaining the control's dark
+background, producing a measured 2.93:1 ratio instead of the required 4.5:1.
+
+**Classification:** Theme authoring defect, not a Style Contract or compiler
+failure. The public surface intentionally includes Jaunder-owned navigation as
+well as Post content, so safe generic selectors can still create inaccessible
+combinations.
+
+**Resolution:** limit Theme link colors to links inside the semantic
+`primary-navigation` and `post` parts, regenerate `style.css` and `preview.png`,
+and repeat package, installation, and accessibility proof. This preserves the
+recognizable Tailwind link treatment without styling unrelated controls.
