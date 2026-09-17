@@ -84,6 +84,18 @@ combinations.
 and repeat package, installation, and accessibility proof. This preserves the
 recognizable Tailwind link treatment without styling unrelated controls.
 
+**Observed final route-level defect:** canonical run `35268445169` installed
+artifact SHA-256 `42df7fb53f215ebbcfb645c5e78524fc78c63186b45d2eee9528634e19918341`
+showed `.j-tag-here` inheriting Jaunder's muted-soft `#9a9a96` on the Theme's
+white Post background at 2.82:1.
+
+**Classification:** Theme integration/authoring defect. The Theme did not give
+tag descendant links an explicit color through the Style Contract semantic hook.
+
+**Resolution:** set `[data-jaunder-part="tag"] a` to accessible `#075985` in
+light mode and `#bae6fd` in the existing dark-mode media rule. This scopes the
+fix to the semantic hook without targeting Jaunder classes.
+
 ## 2026-09-17: narrow application shell
 
 **Observed platform failure:** at a 390px viewport Jaunder's fixed 232px sidebar
