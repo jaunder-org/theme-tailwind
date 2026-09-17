@@ -1,0 +1,40 @@
+name: Theme package
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+jobs:
+  generate:
+    name: Generate and check drift
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run check:drift
+
+  package:
+    if: github.ref_type != 'tag'
+    needs: generate
+    permissions:
+      contents: read
+    uses: jaunder-org/jaunder/.github/workflows/theme-repository.yml@2d4db390fa7b0d031825bed0347c5b8e37e2f320
+    with:
+      jaunder-revision: 2d4db390fa7b0d031825bed0347c5b8e37e2f320
+      theme-directory: .
+
+  release:
+    if: github.ref_type == 'tag'
+    needs: generate
+    permissions:
+      contents: write
+    uses: jaunder-org/jaunder/.github/workflows/theme-repository.yml@2d4db390fa7b0d031825bed0347c5b8e37e2f320
+    with:
+      jaunder-revision: 2d4db390fa7b0d031825bed0347c5b8e37e2f320
+      theme-directory: .
