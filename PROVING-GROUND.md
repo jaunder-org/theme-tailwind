@@ -17,13 +17,16 @@ custom-property token streams cannot hide global references`.
 standard descriptor does not carry a cross-surface global name, while its token
 stream remains subject to Jaunder's URL visitor.
 
-**Resolution in progress:** Jaunder commit `76bc21bb` admits `font-display`
-without admitting arbitrary unknown `@font-face` descriptors and retains URL
-rejection inside its value. Focused red/green proof covers both `swap` and an
-external-URL rejection. This package now retains `font-display: swap` and passes
-`jaunder theme check` against a binary built from that commit. Release readiness
-still depends on the Jaunder fix landing and the workflow pin advancing to its
-immutable `main` commit.
+**Resolved:** Jaunder PR
+[`#1555`](https://github.com/jaunder-org/jaunder/pull/1555) landed in immutable
+`main` commit `98b53ef0f6456f1f35f638a4dca898c633dcdaa8`. It admits only the five
+standard `font-display` keywords, continues rejecting arbitrary unknown
+`@font-face` descriptors, and retains URL rejection inside descriptor values.
+Focused red/green proof covers accepted keywords plus unknown, functional,
+multi-token, and external-URL rejection. This package retains
+`font-display: swap` and passes `jaunder theme check` against the landed binary.
+The final reusable-workflow pin advanced again after the permission blocker
+recorded below.
 
 ## 2026-09-16: canonical thumbnail smoke
 
@@ -43,3 +46,23 @@ package security validator.
 `data-jaunder-part` hooks only. Regenerate `style.css`, rerun `theme check`, and
 regenerate the thumbnail; the resulting preview visibly applies the intended
 shell, cards, typography, assets, and color treatment.
+
+## 2026-09-17: reusable-workflow permission inheritance
+
+**Observed platform failure:** the first real pull-request run failed before any
+job started. The read-only package caller invoked Jaunder's reusable workflow,
+but GitHub rejected it because the skipped nested release job explicitly
+requested `contents: write`. GitHub validates nested permission requests before
+job conditions, so a reusable workflow containing that request cannot also
+serve a least-privilege read-only caller.
+
+**Classification:** Jaunder reusable-workflow defect demonstrated by the real
+external repository, not an Actions outage and not a reason to grant write
+permission to pull-request packaging.
+
+**Resolution:** Jaunder PR
+[`#1558`](https://github.com/jaunder-org/jaunder/pull/1558) landed in immutable
+`main` commit `ddceffae8cf66039c04fa18d100586520900b4f3`. The nested release job now
+inherits caller permissions; branch and pull-request callers grant only
+`contents: read`, while tag release callers grant `contents: write`. This
+repository pins both the reusable workflow and Jaunder binary to that commit.
