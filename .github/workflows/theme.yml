@@ -3,7 +3,7 @@ name: Theme package
 on:
   push:
     branches: [main]
-    tags: ['v*']
+    tags: ["v*"]
   pull_request:
 
 jobs:
@@ -19,6 +19,22 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run check:drift
 
+  version:
+    name: Validate release version
+    if: github.ref_type == 'tag'
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Require a stable SemVer tag
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          if ! [[ "$TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "release tag must be stable SemVer: vMAJOR.MINOR.PATCH" >&2
+            exit 1
+          fi
+
   package:
     if: github.ref_type != 'tag'
     needs: generate
@@ -31,7 +47,7 @@ jobs:
 
   release:
     if: github.ref_type == 'tag'
-    needs: generate
+    needs: [generate, version]
     permissions:
       contents: write
     uses: jaunder-org/jaunder/.github/workflows/theme-repository.yml@2d4db390fa7b0d031825bed0347c5b8e37e2f320

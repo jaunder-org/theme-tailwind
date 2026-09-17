@@ -18,6 +18,14 @@ selector, or `anchor-name` declaration.
 package inputs. `src/`, docs, and workflow files are maintenance support files.
 `style.css` is committed portable source-of-truth output.
 
+## Versioning
+
+Stable releases use immutable `vMAJOR.MINOR.PATCH` tags. The tag and GitHub
+release identify the Theme release; `theme.json`'s `schema` and
+`style_contract` identify Jaunder compatibility contracts instead. See
+[VERSIONING.md](VERSIONING.md) for the SemVer policy and why schema 1 does not
+carry a release-version field.
+
 ## Maintain
 
 Use the locked dependency graph and repository-local binary; do not use `npx`:
@@ -36,7 +44,8 @@ The local check is Jaunder's canonical validator, not a copied validator. See
 
 ## Install a release
 
-Download the release's `theme-package.zip`, then in Jaunder open **Themes**:
+Download `theme-package.zip` from the desired versioned GitHub release, then in
+Jaunder open **Themes**:
 import ZIP → preview the private draft → publish → explicitly select the
 published Theme. Importing does not alter public pages; only explicit selection
 does. Do not use repository support files as import input.
