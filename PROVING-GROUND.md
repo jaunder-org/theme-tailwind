@@ -89,12 +89,14 @@ artifact SHA-256 `42df7fb53f215ebbcfb645c5e78524fc78c63186b45d2eee9528634e199183
 showed `.j-tag-here` inheriting Jaunder's muted-soft `#9a9a96` on the Theme's
 white Post background at 2.82:1.
 
-**Classification:** Theme integration/authoring defect. The Theme did not give
-tag descendant links an explicit color through the Style Contract semantic hook.
+**Classification:** Theme integration/authoring defect. The first attempt used
+the `tag` descendant hook, but `.j-tag-here` is a sibling of the
+`[data-jaunder-part="tag"]` anchor inside the `tag-list`, so that selector could
+not match the context link.
 
-**Resolution:** set `[data-jaunder-part="tag"] a` to accessible `#075985` in
-light mode and `#bae6fd` in the existing dark-mode media rule. This scopes the
-fix to the semantic hook without targeting Jaunder classes.
+**Resolution:** set `[data-jaunder-part="tag-list"] a` to accessible `#075985`
+in light mode and `#bae6fd` in the existing dark-mode media rule. This scopes
+the fix through the tag-list descendant hook without targeting Jaunder classes.
 
 ## 2026-09-17: narrow application shell
 
