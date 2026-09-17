@@ -83,3 +83,23 @@ combinations.
 `primary-navigation` and `post` parts, regenerate `style.css` and `preview.png`,
 and repeat package, installation, and accessibility proof. This preserves the
 recognizable Tailwind link treatment without styling unrelated controls.
+
+## 2026-09-17: narrow application shell
+
+**Observed platform failure:** at a 390px viewport Jaunder's fixed 232px sidebar
+left roughly 150px for the Theme surface. The installed package could reflow its
+own content, but could not repair application chrome outside the compiler-owned
+Theme scope.
+
+**Classification:** Jaunder application-shell defect demonstrated by the
+installed package, not a Theme CSS or Style Contract defect.
+
+**Resolution:** Jaunder PR
+[`#1560`](https://github.com/jaunder-org/jaunder/pull/1560) landed in immutable
+`main` commit `a231d9d6215a638ce8e860a95b39d87179159680`. Below 720px the shell now
+stacks navigation above the main surface, and the obsolete Firefox-only narrow
+Post Actions placement override was removed so the trusted disclosure remains
+anchored to its trigger. Focused responsive-shell and cross-backend/browser
+Post Actions coverage, updated Chromium and Firefox visual baselines, and the
+full required CI matrix passed. This repository pins both the reusable workflow
+and Jaunder binary to that commit.
