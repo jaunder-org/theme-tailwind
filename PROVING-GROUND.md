@@ -239,3 +239,18 @@ include `li`, retaining the accessible `#d1d5db` foreground. This remains
 inside the semantic boundary and does not depend on Jaunder classes, wrapper
 depth, or sibling positions. The final installed-artifact matrix must pass
 again with this generated CSS before release.
+
+## 2026-09-18: long unbroken post content
+
+**Observed Theme failure:** final wide visual review showed the structured
+fixture's deliberately long unbroken token painting beyond the post card. The
+document did not gain horizontal scrolling because the application shell clips
+overflow, but the content itself escaped its presentation boundary.
+
+**Classification:** Theme-authoring defect. The Theme did not define a wrapping
+policy for arbitrary authored post content.
+
+**Resolution:** add `overflow-wrap: anywhere` to the documented `post-body`
+semantic boundary. Descendants inherit the policy without depending on their
+exact Markdown wrapper structure, and ordinary prose wrapping is unchanged.
+The final artifact and visual matrix must be regenerated and repeated.
