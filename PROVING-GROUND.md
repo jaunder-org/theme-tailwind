@@ -115,5 +115,26 @@ stacks navigation above the main surface, and the obsolete Firefox-only narrow
 Post Actions placement override was removed so the trusted disclosure remains
 anchored to its trigger. Focused responsive-shell and cross-backend/browser
 Post Actions coverage, updated Chromium and Firefox visual baselines, and the
-full required CI matrix passed. This repository pins both the reusable workflow
-and Jaunder binary to that commit.
+full required CI matrix passed. The final pin advanced again after the selector
+compiler blocker recorded below.
+
+## 2026-09-18: descendant selector serialization
+
+**Observed platform failure:** the installed artifact from canonical run
+`35271159776` contained the intended semantic selector
+`[data-jaunder-part="tag-list"] a`, but Jaunder compiled it as
+`a [data-jaunder-part="tag-list"]`. The reversed selector could not match the
+context link, so the route-level WCAG scan continued reporting 2.82:1 contrast.
+
+**Classification:** Jaunder CSS compiler defect demonstrated by the real Theme
+package, not a Style Contract expansion. Lightning CSS exposes selector
+components in right-to-left match order, while Jaunder reconstructed them as if
+they were already in serialization order.
+
+**Resolution:** Jaunder PR
+[`#1566`](https://github.com/jaunder-org/jaunder/pull/1566) landed in immutable
+`main` commit `d2f9e457e647f5f9c9b64dee1577f2e346171afe`. The compiler now reverses
+compound order while preserving component order within each compound. Regression
+coverage includes this package's selector plus multi-component compounds and
+mixed combinators; required validation and the full e2e matrix passed. This
+repository pins both the reusable workflow and Jaunder binary to that commit.
