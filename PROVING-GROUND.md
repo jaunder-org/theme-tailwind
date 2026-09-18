@@ -173,11 +173,11 @@ AA target.
 **Classification:** Theme-authoring defect. The subtitle lacked an explicit
 dark value; this is not a Jaunder compiler or Style Contract defect.
 
-**Resolution:** in the existing dark media rule, style the semantic/structural
-Style Contract boundary `[data-jaunder-part="masthead"] h1 + div` with
-muted-light `#cbd5e1`. The server and CSR twins render the optional subtitle as
-the element immediately following `h1`, so the stable structural descendant
-fixes it without targeting Jaunder classes.
+**Resolution:** in the existing dark media rule, style ordinary `div`
+descendants of the masthead semantic boundary
+`[data-jaunder-part="masthead"]` with muted-light `#cbd5e1`. This does not
+depend on sibling positions or target Jaunder classes; explicit control colors
+remain independent.
 
 ## 2026-09-18: final installed-artifact proof
 
