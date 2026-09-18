@@ -250,11 +250,9 @@ overflow, but the content itself escaped its presentation boundary.
 **Classification:** Theme-authoring defect. The Theme did not define a wrapping
 policy for arbitrary authored post content.
 
-**Resolution:** apply `overflow-wrap: anywhere` to prose, list-item,
-quotation, and code descendants within the documented `post-body` semantic
-boundary. This covers Markdown's arbitrary-content carriers without depending
-on wrapper depth. At 320px, the browser's default `h1` size still exceeded the
-post body's content box by 6px, so the Theme also uses a 1.75rem semantic
-`post-body h1` size at widths through 24rem. This preserves the whole heading
-word while containing it. The final artifact and visual matrix must be
-regenerated and repeated.
+**Resolution:** apply `overflow-wrap: anywhere` at the documented `post-body`
+semantic boundary so direct text and arbitrary Markdown wrappers inherit the
+policy. Semantic heading descendants restore `overflow-wrap: normal`, and at
+320px the Theme uses a 1.75rem `post-body h1` size through 24rem. This contains
+unbroken content while preserving ordinary heading words. The final artifact
+and visual matrix must be regenerated and repeated.
