@@ -253,5 +253,8 @@ policy for arbitrary authored post content.
 **Resolution:** apply `overflow-wrap: anywhere` to prose, list-item,
 quotation, and code descendants within the documented `post-body` semantic
 boundary. This covers Markdown's arbitrary-content carriers without depending
-on wrapper depth while leaving heading word boundaries intact on narrow
-screens. The final artifact and visual matrix must be regenerated and repeated.
+on wrapper depth. At 320px, the browser's default `h1` size still exceeded the
+post body's content box by 6px, so the Theme also uses a 1.75rem semantic
+`post-body h1` size at widths through 24rem. This preserves the whole heading
+word while containing it. The final artifact and visual matrix must be
+regenerated and repeated.
