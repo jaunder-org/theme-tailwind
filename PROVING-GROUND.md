@@ -258,3 +258,40 @@ emergency wrapping: the 320px content box cannot contain the longest ordinary
 fixture word even at that reduced scale. This keeps the 390px presentation's
 whole heading words while guaranteeing true 320px reflow. The final artifact
 and visual matrix must be regenerated and repeated.
+
+## 2026-09-18: final immutable-pin installed-artifact proof
+
+Canonical workflow run
+[`35367633808`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35367633808)
+for commit `fa7eb12` produced `theme-package.zip` SHA-256
+`0d1d5f21e1a9e92f5c753518afe218b321cb1391c48ccbf8245ac9cc08b09955`.
+The exact artifact was installed into Jaunder immutable `main` commit
+`45703226a23b66c89683c3ddc88b1cb10a3584fb` through the Site catalog ZIP
+import, isolated private preview, publish, and explicit Public selection flow.
+Theme Studio remained on the trusted Studio presentation with no public Theme
+stylesheet.
+
+The final Chromium presentation matrix seeded 51 paginated Posts plus plain,
+structured-Markdown, and explicit-summary states. It covered Local, author,
+tag, and permalink routes; titled and untitled Posts; summary presence and
+absence; avatars, tags, attribution, continuation, long unbroken content, and
+structured headings, prose, links, lists, quotations, and code. Package logo,
+font, header default, and both explicit header-pool entries were fetched from
+rendered routes and matched the committed SHA-256 digests. The matrix verified
+one public Theme stylesheet, the Theme surface, 320px document and painted-text
+containment, 200%-zoom-equivalent layout, 3px keyboard focus, reduced-motion
+absence of transitions/animations, and zero automated WCAG 2.2 A/AA
+violations in light and dark modes. Manual review accepted the resulting visual
+hierarchy, contrast, responsive placement, and long-content containment.
+
+Retained Studio-Before/Theme-After screenshots cover Local and permalink at
+1440×900 and 390×844 in light and dark under
+`final-pairs/{studio-before,theme-after}-...png`. The eight final route images
+remain `tailwind-final-{local,author,tag,permalink}-390-{light,dark}.png`.
+
+Finally, the same artifact passed focused trusted Post Actions proofs in
+Chromium, Firefox, and WebKit. Each browser used two owned Posts, scrolled the
+second narrow trigger into view, opened and used the native menu, verified its
+390px viewport placement, and proved that no compiled Theme selector matched
+either trusted trigger. Temporary repository-local evidence specs were removed
+after the successful runs.
