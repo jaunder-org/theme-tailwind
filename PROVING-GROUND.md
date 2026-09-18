@@ -294,4 +294,21 @@ Chromium, Firefox, and WebKit. Each browser used two owned Posts, scrolled the
 second narrow trigger into view, opened and used the native menu, verified its
 390px viewport placement, and proved that no compiled Theme selector matched
 either trusted trigger. Temporary repository-local evidence specs were removed
-after the successful runs.
+after the successful runs. A later manual focus-contrast measurement below
+requires this final artifact proof to be repeated once more before release.
+
+## 2026-09-18: dark focus-indicator contrast
+
+**Observed Theme failure:** the final retained-evidence audit measured the 3px
+focus outline `#0284c7` at 4.10:1 on white and 3.91:1 on the light page surface,
+but only 2.52:1 on the dark post surface `#374151`. The indicator thickness and
+keyboard reachability were correct, but the dark combination missed WCAG 2.2's
+3:1 focus/UI contrast threshold.
+
+**Classification:** Theme-authoring defect. Automated text-contrast scans do not
+substitute for a focus-indicator contrast measurement.
+
+**Resolution:** in dark mode, use `#7dd3fc` for focus outlines. It measures
+6.18:1 on `#374151`, 8.80:1 on the dark page surface `#1f2937`, 5.47:1 on the
+tag background `#164e63`, and 10.71:1 on the code background `#0f172a`. Light
+mode retains `#0284c7`, whose weakest Theme-surface combination is 3.91:1.
