@@ -1,0 +1,14 @@
+{
+  "name": "@jaunder-org/theme-tailwind",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Tailwind-authored Jaunder Theme Package source",
+  "scripts": {
+    "generate": "./node_modules/.bin/tailwindcss --input src/theme.css --output style.css --minify",
+    "check:drift": "node scripts/check-drift.mjs",
+    "check": "npm run check:drift"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.1.13"
+  }
+}
