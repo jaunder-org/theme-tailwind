@@ -312,3 +312,17 @@ substitute for a focus-indicator contrast measurement.
 6.18:1 on `#374151`, 8.80:1 on the dark page surface `#1f2937`, 5.47:1 on the
 tag background `#164e63`, and 10.71:1 on the code background `#0f172a`. Light
 mode retains `#0284c7`, whose weakest Theme-surface combination is 3.91:1.
+
+Canonical workflow run
+[`35369790801`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35369790801)
+produced the corrected artifact SHA-256
+`02354b80b058f66b8a9b58ba48f8c5f1dbb7317c88e10cab84d7c83bf87d9c35`.
+Installed through the same Studio lifecycle on Jaunder
+`45703226a23b66c89683c3ddc88b1cb10a3584fb`, it passed light/dark Axe scans
+and computed 3px focus-color assertions. Chromium's browser-engine page scale
+was set to exactly 2.0 through the DevTools protocol; the permalink remained
+visible, readable, and operable at a 720px visual viewport. The same artifact
+again passed the two-Post narrow owner-actions/menu/isolation proof in Chromium,
+Firefox, and WebKit. The 200% capture and all retained reference, Before/After,
+and final-route images are under [`evidence/issue-1549/`](evidence/issue-1549/),
+whose README records the named visual and accessibility approval outcomes.
