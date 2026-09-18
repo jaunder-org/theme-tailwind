@@ -138,3 +138,24 @@ compound order while preserving component order within each compound. Regression
 coverage includes this package's selector plus multi-component compounds and
 mixed combinators; required validation and the full e2e matrix passed. This
 repository pins both the reusable workflow and Jaunder binary to that commit.
+
+## 2026-09-18: dark permalink contrast
+
+**Observed final installed-artifact failure:** canonical run `35291517641`
+installed artifact SHA-256
+`232c8c6d37a5da7cfe6b4315159c0d123828fa345058bb08e99467cd32fb9783` into
+Jaunder commit `d2f9e457`. Light Local, author, tag, and permalink proofs
+passed, but dark permalink Axe found the masthead `h1` and post-body `p` at
+1.68:1 on `#374151`, plus semantic `author-handle` and `published-time` at
+2.01:1. Each missed the 4.5:1 normal-text AA target.
+
+**Classification:** Theme-authoring defect. The installed artifact did not
+supply explicit dark values for these Style Contract semantic hooks, allowing
+lower-contrast inherited values on the dark card background; this is neither a
+Jaunder compiler nor a Style Contract defect.
+
+**Resolution:** in the existing dark media rule, assign masthead `h1` the
+light-heading `#f1f5f9`; assign `author-handle` and `published-time` the
+muted-light `#cbd5e1`; and explicitly assign post-body
+`:is(p,ul,ol,blockquote)` `#d1d5db`. The selectors use only Style Contract
+semantic hooks and no Jaunder classes.
