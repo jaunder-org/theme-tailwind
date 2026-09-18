@@ -250,7 +250,8 @@ overflow, but the content itself escaped its presentation boundary.
 **Classification:** Theme-authoring defect. The Theme did not define a wrapping
 policy for arbitrary authored post content.
 
-**Resolution:** add `overflow-wrap: anywhere` to the documented `post-body`
-semantic boundary. Descendants inherit the policy without depending on their
-exact Markdown wrapper structure, and ordinary prose wrapping is unchanged.
-The final artifact and visual matrix must be regenerated and repeated.
+**Resolution:** apply `overflow-wrap: anywhere` to prose, list-item,
+quotation, and code descendants within the documented `post-body` semantic
+boundary. This covers Markdown's arbitrary-content carriers without depending
+on wrapper depth while leaving heading word boundaries intact on narrow
+screens. The final artifact and visual matrix must be regenerated and repeated.

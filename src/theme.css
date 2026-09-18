@@ -25,9 +25,10 @@ button:focus-visible { outline: 3px solid #0284c7; outline-offset: 3px; }
 [data-jaunder-part="author-name"] { color: #1e293b; font-weight: 700; }
 [data-jaunder-part="post-title"] { margin: 1rem 0 .5rem; color: #1e293b; font-size: clamp(1.75rem, 4vw, 2.25rem); line-height: 1.15; letter-spacing: -.025em; }
 [data-jaunder-part="post-summary"] { margin: 0 0 1rem; color: #475569; font-size: 1.125rem; }
-[data-jaunder-part="post-body"] { color: #334155; overflow-wrap: anywhere; }
+[data-jaunder-part="post-body"] { color: #334155; }
 [data-jaunder-part="post-body"] :is(h1,h2,h3) { color: #1e293b; line-height: 1.25; margin: 1.5em 0 .6em; }
 [data-jaunder-part="post-body"] :is(p,ul,ol,blockquote,pre) { margin: 1em 0; }
+[data-jaunder-part="post-body"] :is(p,li,blockquote,pre,code) { overflow-wrap: anywhere; }
 [data-jaunder-part="post-body"] blockquote { margin-left: 0; padding-left: 1rem; border-left: .25rem solid #94a3b8; color: #475569; }
 [data-jaunder-part="post-body"] :is(code,pre) { border-radius: .375rem; background: #e2e8f0; color: #0f172a; font-family: ui-monospace, monospace; }
 [data-jaunder-part="post-body"] code { padding: .15em .3em; }
