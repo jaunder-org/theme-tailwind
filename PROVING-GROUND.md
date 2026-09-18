@@ -252,7 +252,9 @@ policy for arbitrary authored post content.
 
 **Resolution:** apply `overflow-wrap: anywhere` at the documented `post-body`
 semantic boundary so direct text and arbitrary Markdown wrappers inherit the
-policy. Semantic heading descendants restore `overflow-wrap: normal`, and at
-320px the Theme uses a 1.75rem `post-body h1` size through 24rem. This contains
-unbroken content while preserving ordinary heading words. The final artifact
+policy. Semantic heading descendants restore `overflow-wrap: normal` at normal
+viewports. Through 24rem, the Theme uses a 1.75rem `post-body h1` and permits
+emergency wrapping: the 320px content box cannot contain the longest ordinary
+fixture word even at that reduced scale. This keeps the 390px presentation's
+whole heading words while guaranteeing true 320px reflow. The final artifact
 and visual matrix must be regenerated and repeated.
