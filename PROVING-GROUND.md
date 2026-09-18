@@ -159,3 +159,23 @@ light-heading `#f1f5f9`; assign `author-handle` and `published-time` the
 muted-light `#cbd5e1`; and explicitly assign post-body
 `:is(p,ul,ol,blockquote)` `#d1d5db`. The selectors use only Style Contract
 semantic hooks and no Jaunder classes.
+
+
+## 2026-09-18: dark author masthead subtitle contrast
+
+**Observed final installed-artifact failure:** canonical run `35292674686`
+installed artifact SHA-256
+`33fa5648b26a7b5bb040cadeabf76b14bef3a6924801b7ed83a06fe1b966e8af`
+into Jaunder commit `d2f9e457`. All light routes and dark Local passed, but
+dark author route `/~testoperator` left the masthead subtitle `.j-sub` at
+`#6e6e6a` on `#374151`, a 2.01:1 contrast ratio below the 4.5:1 normal-text
+AA target.
+
+**Classification:** Theme-authoring defect. The subtitle lacked an explicit
+dark value; this is not a Jaunder compiler or Style Contract defect.
+
+**Resolution:** in the existing dark media rule, style the semantic/structural
+Style Contract boundary `[data-jaunder-part="masthead"] h1 + div` with
+muted-light `#cbd5e1`. The server and CSR twins render the optional subtitle as
+the element immediately following `h1`, so the stable structural descendant
+fixes it without targeting Jaunder classes.
