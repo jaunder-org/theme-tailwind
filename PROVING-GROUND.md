@@ -221,3 +221,21 @@ source already agreed on the semantic concept; the rendering twins omitted it.
 CSR avatar twins now emit the documented hook, with exact renderer regression
 coverage; required validation and the full e2e matrix passed. This repository
 pins both the reusable workflow and Jaunder binary to that commit.
+
+## 2026-09-18: dark structured-list contrast
+
+**Observed Theme failure:** the final installed-artifact matrix added structured
+Markdown and found list items at `#1a1a19` on the dark post surface `#374151`, a
+1.68:1 contrast ratio. Paragraphs, list containers, quotations, and code were
+already covered, but Jaunder's presentation reset assigns a foreground directly
+to each `li`, so the list item did not inherit the authored list color.
+
+**Classification:** Theme-authoring defect. The package had not covered the
+ordinary list-item descendant within the documented `post-body` semantic
+boundary.
+
+**Resolution:** extend the existing dark `post-body` descendant group to
+include `li`, retaining the accessible `#d1d5db` foreground. This remains
+inside the semantic boundary and does not depend on Jaunder classes, wrapper
+depth, or sibling positions. The final installed-artifact matrix must pass
+again with this generated CSS before release.
