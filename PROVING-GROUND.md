@@ -160,7 +160,6 @@ muted-light `#cbd5e1`; and explicitly assign post-body
 `:is(p,ul,ol,blockquote)` `#d1d5db`. The selectors use only Style Contract
 semantic hooks and no Jaunder classes.
 
-
 ## 2026-09-18: dark author masthead subtitle contrast
 
 **Observed final installed-artifact failure:** canonical run `35292674686`
@@ -179,3 +178,23 @@ Style Contract boundary `[data-jaunder-part="masthead"] h1 + div` with
 muted-light `#cbd5e1`. The server and CSR twins render the optional subtitle as
 the element immediately following `h1`, so the stable structural descendant
 fixes it without targeting Jaunder classes.
+
+## 2026-09-18: final installed-artifact proof
+
+Canonical run `35293327375` produced `theme-package.zip` SHA-256
+`136b28a941d475859804f6ea886fa8fa425f7d1454884332c1ce7f13e39fcd4f`.
+Installed into Jaunder commit `d2f9e457e647f5f9c9b64dee1577f2e346171afe`,
+the exact artifact completed the Studio Site catalog lifecycle: ZIP import,
+private preview, publish, and explicit Public selection.
+
+A fresh unauthenticated Chromium context at 390×844 then exercised Local,
+author, tag, and permalink routes in both light and system-dark modes with
+reduced motion. All eight route states loaded exactly one Theme stylesheet,
+exposed the Theme surface, had no machine-checkable WCAG 2.2 A/AA violations,
+stacked the sidebar above the main surface, remained within the viewport, and
+had no horizontal overflow. Comparable screenshots live in the issue evidence
+set under `tailwind-final-{local,author,tag,permalink}-390-{light,dark}.png`.
+The authenticated permalink also retained visible trusted Post Actions, and no
+selector from the compiled Theme stylesheet matched its trigger. The focused
+`cargo xtask e2e-local --browser chromium theme-tailwind-final-proof.spec.ts`
+proof passed; its temporary test file was removed after the run.
