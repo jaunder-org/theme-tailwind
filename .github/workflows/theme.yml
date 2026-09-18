@@ -42,9 +42,9 @@ jobs:
     needs: generate
     permissions:
       contents: read
-    uses: jaunder-org/jaunder/.github/workflows/theme-repository.yml@d2f9e457e647f5f9c9b64dee1577f2e346171afe
+    uses: jaunder-org/jaunder/.github/workflows/theme-repository.yml@45703226a23b66c89683c3ddc88b1cb10a3584fb
     with:
-      jaunder-revision: d2f9e457e647f5f9c9b64dee1577f2e346171afe
+      jaunder-revision: 45703226a23b66c89683c3ddc88b1cb10a3584fb
       theme-directory: .
 
   release:
@@ -52,7 +52,7 @@ jobs:
     needs: [generate, version]
     permissions:
       contents: write
-    uses: jaunder-org/jaunder/.github/workflows/theme-repository.yml@d2f9e457e647f5f9c9b64dee1577f2e346171afe
+    uses: jaunder-org/jaunder/.github/workflows/theme-repository.yml@45703226a23b66c89683c3ddc88b1cb10a3584fb
     with:
-      jaunder-revision: d2f9e457e647f5f9c9b64dee1577f2e346171afe
+      jaunder-revision: 45703226a23b66c89683c3ddc88b1cb10a3584fb
       theme-directory: .

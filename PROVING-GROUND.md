@@ -197,4 +197,27 @@ set under `tailwind-final-{local,author,tag,permalink}-390-{light,dark}.png`.
 The authenticated permalink also retained visible trusted Post Actions, and no
 selector from the compiled Theme stylesheet matched its trigger. The focused
 `cargo xtask e2e-local --browser chromium theme-tailwind-final-proof.spec.ts`
-proof passed; its temporary test file was removed after the run.
+proof passed; its temporary test file was removed after the run. Later
+presentation changes and the avatar-hook blocker below require this proof to be
+repeated against the final immutable pin before release.
+
+## 2026-09-18: missing avatar semantic hook
+
+**Observed platform failure:** expanded optional-state proof installed canonical
+run `35295469290`, artifact SHA-256
+`820b6853a3bc1094ed7979695b1565c9ec2d543bc601647690f1eb3fc789824e`,
+into Jaunder commit `d2f9e457e647f5f9c9b64dee1577f2e346171afe`. Style
+Contract 1 documented the optional `avatar` part and this Theme authored it, but
+rendered initials avatars exposed no `data-jaunder-part="avatar"` hook in either
+the server or reactive markup.
+
+**Classification:** Jaunder Style Contract implementation defect demonstrated
+by the real package, not a request for a new hook. The public contract and Theme
+source already agreed on the semantic concept; the rendering twins omitted it.
+
+**Resolution:** Jaunder PR
+[`#1572`](https://github.com/jaunder-org/jaunder/pull/1572) landed in immutable
+`main` commit `45703226a23b66c89683c3ddc88b1cb10a3584fb`. Both SSR and
+CSR avatar twins now emit the documented hook, with exact renderer regression
+coverage; required validation and the full e2e matrix passed. This repository
+pins both the reusable workflow and Jaunder binary to that commit.
