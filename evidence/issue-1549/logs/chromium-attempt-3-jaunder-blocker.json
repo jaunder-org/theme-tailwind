@@ -1,0 +1,11 @@
+{
+  "command": "THEME_TAILWIND_ZIP=/tmp/theme-tailwind-pr1-final-artifact/theme-package.zip THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 devtool run -- cargo xtask e2e-local theme-tailwind-final-evidence.spec.ts",
+  "devtool_stdout": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789867212941-2998963.out",
+  "devtool_stderr": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789867212941-2998963.err",
+  "parked_capture": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/e2e-local/run-o27fra/chromium/capture/otel-traces.jsonl",
+  "result": "failed",
+  "classification": "Jaunder defect/blocker",
+  "minimal_reproduction": "In a fresh e2e-local SQLite instance at Jaunder 529fbefadee44e0edc1ed999b289586094a740e0, sign in as testoperator; select Site catalog; import the canonical theme-package.zip (SHA-256 433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce); preview, publish, and explicitly choose it as Public selection; open signed-out Local (/). The page reports data-theme=custom and loads one immutable custom stylesheet, but no [data-jaunder-part=header-image] exists although theme.json defaults.header declares two package assets.",
+  "failed_assertion": "expected [data-jaunder-part=header-image] to be visible; element(s) not found",
+  "zip_sha256": "433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce"
+}

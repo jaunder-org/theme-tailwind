@@ -1,0 +1,9 @@
+{
+  "command": "THEME_TAILWIND_ZIP=/tmp/theme-tailwind-pr1-final-artifact/theme-package.zip THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 devtool run -- cargo xtask e2e-local theme-tailwind-final-evidence.spec.ts",
+  "devtool_stdout": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789866989362-2991306.out",
+  "devtool_stderr": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789866989362-2991306.err",
+  "parked_capture": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/e2e-local/run-dZzH3K/chromium/capture/otel-traces.jsonl",
+  "result": "failed",
+  "diagnosis": "Jaunder paginates Local at 50 Posts by design. The harness initially asserted 51 before using the exposed Load more control. It was corrected to assert the first 50, activate Load more, then assert 51; no Jaunder defect was found.",
+  "zip_sha256": "433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce"
+}

@@ -8,7 +8,7 @@ and are not final proof for this candidate.
 ## 2026-09-19: semantic-hook redesign checkpoint
 
 **Candidate Jaunder pin:**
-`529fbefadee44e0edc1ed999b289586094a740e0`. This immutable `main` commit
+`bfb02febb81212258aff1c10bbdf5248fa864cc5`. This immutable `main` commit
 contains the required public `hero`, `navigation-rail`, `site-brand`, and
 `navigation-search` Style Contract hooks (PR #1573), and Theme Studio's
 owned-Media presentation controls (PR #1580). Both `jaunder-revision` and the
@@ -47,30 +47,41 @@ its `theme-package.zip` and running `sha256sum` produced the same SHA-256:
 This is a workflow-built candidate artifact, not a release artifact and not
 final presentation proof.
 
-## Final-evidence status
+## Final-evidence blocker — 2026-09-20
 
-The complete final Studio/browser matrix is **pending**. No Studio lifecycle
-result, route capture, accessibility result, or manual approval is claimed for
-this redesigned candidate.
+**Canonical final-head run:**
+[35480413189](https://github.com/jaunder-org/theme-tailwind/actions/runs/35480413189)
+for `50dec18f537d27898eed0810c18c474fc87aa99f` completed successfully. Its
+sole downloaded import input is
+`/tmp/theme-tailwind-pr1-final-artifact/theme-package.zip`, SHA-256
+`433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce`.
 
-A fresh dedicated evidence run must download canonical workflow
-`theme-package.zip` for the final documentation commit and use that exact ZIP
-as the only import input. It must recreate a durable or source-recorded harness
-covering:
+The durable source is
+[`evidence/issue-1549/harness/final-evidence.spec.ts`](evidence/issue-1549/harness/final-evidence.spec.ts).
+It was copied temporarily into Jaunder `end2end/tests/` and invoked exactly as:
 
-- Studio import, private preview, publish, explicit public selection, and Studio
-  recovery, including package and owned-Media logo/header-pool bindings;
-- Local, author, tag, and permalink routes; titled/untitled and
-  summary-present/absent Posts; avatar, tags, attribution, continuation,
-  pagination, structured Markdown, and a long unbroken token;
-- package font, package logo, default header, and every explicit package and
-  owned-Media header-pool entry;
-- light/dark at 1440×900, 390×844, and true 320 CSS px; exact 200% browser
-  page scale; reduced motion; keyboard focus and measured contrast; Axe WCAG
-  2.2 A/AA scans; and retained screenshots/logs;
-- Chromium, Firefox, and WebKit two-owned-Post trusted Actions isolation,
-  scrolling, narrow placement, menu opening/use, and proof that no compiled
-  Theme selector styles trusted controls.
+```sh
+THEME_TAILWIND_ZIP=/tmp/theme-tailwind-pr1-final-artifact/theme-package.zip \
+THEME_TAILWIND_EVIDENCE_DIR="$PWD/evidence/issue-1549" \
+devtool run -- cargo xtask e2e-local theme-tailwind-final-evidence.spec.ts
+```
 
-Only after that run may `evidence/issue-1549/` contain final captures and this
-log name a canonical run or artifact hash.
+The first two harness attempts corrected harness-only errors (author catalog
+rather than Site catalog, then Local's intentional 50-Post first page) and are
+recorded in `evidence/issue-1549/logs/chromium-attempt-{1,2}-failure.json`.
+
+The third attempt is a **Jaunder blocker**, not a Theme CSS defect. With the
+canonical ZIP imported into the Site catalog, previewed, published, and
+explicitly selected, signed-out Local loads `data-theme="custom"` and an
+immutable stylesheet but contains no
+`[data-jaunder-part="header-image"]`. The package declares two `defaults.header`
+assets. This prevents proof of the required packaged-header default/pool matrix.
+The exact minimal reproduction, parked OTEL capture identity, and devtool
+stdout/stderr identities are retained in
+[`evidence/issue-1549/logs/chromium-attempt-3-jaunder-blocker.json`](evidence/issue-1549/logs/chromium-attempt-3-jaunder-blocker.json).
+
+Per the approved outline, final proof stops here. No final visual approval,
+accessibility verdict, Firefox/WebKit matrix, PR-ready transition, tag, release,
+or issue closure is claimed. The PR remains draft. The one retained image,
+`final-pairs/local-studio-before-light-1440x900.png`, is only the fresh Studio
+baseline captured before the blocker and is not a completed visual pair.
