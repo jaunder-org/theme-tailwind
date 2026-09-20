@@ -37,19 +37,26 @@ sha256sum /tmp/theme-tailwind-current.zip
 Generation, drift checking, local package validation, and thumbnail generation
 passed. The local package SHA-256 was
 `433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce`.
-This is a local checkpoint value, not a canonical workflow artifact and not a
-release candidate hash.
+
+Canonical workflow run
+[`35480319754`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35480319754)
+for checkpoint `e14833d20b2c51c6b00667801a967eeb134c68de` passed generation,
+canonical validation, thumbnail comparison, and package creation. Downloading
+its `theme-package.zip` and running `sha256sum` produced the same SHA-256:
+`433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce`.
+This is a workflow-built candidate artifact, not a release artifact and not
+final presentation proof.
 
 ## Final-evidence status
 
-The complete final Studio/browser matrix is **pending**. No canonical workflow
-run, canonical artifact SHA-256, Studio lifecycle result, route capture,
-accessibility result, or manual approval is claimed for this redesigned
-candidate.
+The complete final Studio/browser matrix is **pending**. No Studio lifecycle
+result, route capture, accessibility result, or manual approval is claimed for
+this redesigned candidate.
 
-A fresh dedicated evidence run must first push this checkpoint, download the
-canonical workflow `theme-package.zip`, and use that exact ZIP as the only
-import input. It must recreate a durable or source-recorded harness covering:
+A fresh dedicated evidence run must download canonical workflow
+`theme-package.zip` for the final documentation commit and use that exact ZIP
+as the only import input. It must recreate a durable or source-recorded harness
+covering:
 
 - Studio import, private preview, publish, explicit public selection, and Studio
   recovery, including package and owned-Media logo/header-pool bindings;
