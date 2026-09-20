@@ -79,16 +79,18 @@ test("canonical Tailwind package CSS rewrites and loads its declared Inter font"
     const stylesheetResponse = await publicPage.request.get(new URL(stylesheet!, BASE_URL).href);
     expect(stylesheetResponse.ok()).toBeTruthy();
     const css = await stylesheetResponse.text();
-    expect(css).toContain("font-family:Tailwind Theme Inter");
+    const namespacedFontFamily = css.match(/@font-face\{font-family:([^;]+)/)?.[1];
+    expect(namespacedFontFamily).toBeTruthy();
+    const fontFamilyReferences = [...css.matchAll(/font-family:([^;}{]+)/g)].map((match) => match[1]);
+    expect(fontFamilyReferences).not.toHaveLength(0);
+    expect(fontFamilyReferences.every((reference) => reference.includes(namespacedFontFamily!))).toBeTruthy();
     const route = css.match(new RegExp(`/theme/${fontDigest}(?=[)\\"'])`))?.[0];
     expect(route).toBe(`/theme/${fontDigest}`);
     const fontResponse = await publicPage.request.get(new URL(route!, BASE_URL).href);
     expect(fontResponse.ok()).toBeTruthy();
     expect(sha256(await fontResponse.body())).toBe(fontDigest);
     const typography = await publicPage.evaluate(async () => {
-      await document.fonts.ready;
-      const root = document.documentElement;
-      const post = document.querySelector('[data-jaunder-part="post"]');
+      const main = document.querySelector('[data-jaunder-part="main"]');
       const navigationRail = document.querySelector('[data-jaunder-part="navigation-rail"]');
       const trustedAction = document.querySelector("#j-trusted-post-actions button");
       const fontFamilyRules = (element: Element | null) => {
@@ -116,35 +118,45 @@ test("canonical Tailwind package CSS rewrites and loads its declared Inter font"
         }
         return matched;
       };
-      const rootFamily = getComputedStyle(root).fontFamily;
-      const postFamily = post ? getComputedStyle(post).fontFamily : "";
+      const mainFamily = main ? getComputedStyle(main).fontFamily : "";
       const navigationRailFamily = navigationRail ? getComputedStyle(navigationRail).fontFamily : "";
+      const requestedFamily = navigationRailFamily.split(",")[0].replaceAll('"', "").trim();
+      await document.fonts.load(`16px "${requestedFamily}"`);
+      await document.fonts.ready;
       const loadedFamily = [...document.fonts]
         .filter((face) => face.status === "loaded")
         .map((face) => face.family)
-        .find((family) => postFamily.includes(family.replaceAll('"', "")));
+        .find((family) => navigationRailFamily.includes(family.replaceAll('"', "")));
       return {
-        rootFamily,
-        postFamily,
+        mainFamily,
         navigationRailFamily,
         trustedActionFamily: trustedAction ? getComputedStyle(trustedAction).fontFamily : null,
-        postMatchedFontFamilyRules: fontFamilyRules(post),
+        mainMatchedFontFamilyRules: fontFamilyRules(main),
         navigationRailMatchedFontFamilyRules: fontFamilyRules(navigationRail),
+        fontFaces: [...document.fonts].map((face) => ({ family: face.family, status: face.status })),
         loadedFamily: loadedFamily ?? null,
-        fontCheck: loadedFamily ? document.fonts.check(`16px ${loadedFamily}`) : false,
+        fontCheck: loadedFamily ? document.fonts.check(`16px "${loadedFamily}"`) : false,
       };
     });
-    expect(typography.loadedFamily).not.toBeNull();
+    expect(typography.loadedFamily, JSON.stringify(typography)).not.toBeNull();
     expect(typography.fontCheck).toBeTruthy();
-    expect(typography.rootFamily).toContain(typography.loadedFamily!.replaceAll('"', ""));
-    expect(typography.postFamily).toContain(typography.loadedFamily!.replaceAll('"', ""));
+    expect(typography.mainFamily).toContain(typography.loadedFamily!.replaceAll('"', ""));
     expect(typography.navigationRailFamily).toContain(typography.loadedFamily!.replaceAll('"', ""));
-    expect(typography.postMatchedFontFamilyRules).toEqual(expect.arrayContaining([
-      expect.objectContaining({ selector: expect.stringContaining('[data-jaunder-part="main"]') }),
+    expect(typography.navigationRailMatchedFontFamilyRules).toEqual(expect.arrayContaining([
+      expect.objectContaining({
+        selector: expect.stringContaining("data-jaunder-part"),
+        fontFamily: expect.stringContaining(typography.loadedFamily!.replaceAll('"', "")),
+      }),
     ]));
     if (typography.trustedActionFamily)
       expect(typography.trustedActionFamily).not.toContain(typography.loadedFamily!.replaceAll('"', ""));
-    Object.assign(result, { stylesheet, rewrittenFontRoute: route, typography });
+    Object.assign(result, {
+      stylesheet,
+      namespacedFontFamily,
+      fontFamilyReferences,
+      rewrittenFontRoute: route,
+      typography,
+    });
   } finally {
     await publicContext.close();
   }

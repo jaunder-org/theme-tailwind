@@ -1,0 +1,22 @@
+THEME_TAILWIND_ZIP=/tmp/theme-package-35534627075/theme-package.zip \
+THEME_TAILWIND_ZIP_SHA256=c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c \
+THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 \
+devtool run -- cargo xtask e2e-local font-lifecycle-evidence.spec.ts --browser chromium
+
+Running 1 test using 1 worker
+
+[1/1] [chromium] › tests/font-lifecycle-evidence.spec.ts:26:5 › canonical Tailwind package CSS rewrites and loads its declared Inter font
+  1 passed (8.8s)
+e2e-local trace: /home/mdorman/src/jaunder/milestone-22-9/.xtask/e2e-local/run-seEcSl/chromium/capture/otel-traces.jsonl
+[ ok ] build-csr-wasm (1335 ms)
+[ ok ] build-csr-bundle (392622 ms)
+[ ok ] e2e-local-build-server (19867 ms)
+[ ok ] e2e-local-build-support (1018 ms)
+[ ok ] e2e-local-chromium-collector
+[ ok ] e2e-local-chromium-server
+[ ok ] e2e-local-chromium-seed (4037 ms)
+[ ok ] e2e-local-chromium-collector-shutdown
+[ ok ] e2e-local-chromium-capture — trace retained at /home/mdorman/src/jaunder/milestone-22-9/.xtask/e2e-local/run-seEcSl/chromium/capture/otel-traces.jsonl
+[ ok ] e2e-local-chromium-playwright (10283 ms)
+[ ok ] e2e-local-chromium-panic-gate
+xtask e2e-local PASSED in 430121 ms

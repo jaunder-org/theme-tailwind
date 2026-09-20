@@ -10,6 +10,36 @@ The historical proof and captures at commit `295c9a8d2d90318f52f94e1427fc86a9dfb
 were intentionally removed: they describe an earlier presentation and artifact,
 and are not final proof for this candidate.
 
+## Computed package-font lifecycle repair — 2026-09-20
+
+**Root cause:** Jaunder's structural `.j-root, .j-root *` directly assigns
+`font-family: var(--font-body)`, so a Theme's scoped surface declaration cannot
+be inherited by public descendants. The Theme now directly assigns its packaged
+font only at the documented `main` and `navigation-rail` semantic boundaries and
+their semantic descendants. These selectors outrank the structural base rule;
+they do not address incidental classes, layout depth, positional structure, or
+trusted-control mounts.
+
+The source change is `579b40a196d60be5c021f9eed9fed28e55f7d936` and canonical
+workflow run [35534627075](https://github.com/jaunder-org/theme-tailwind/actions/runs/35534627075)
+passed. Its exact downloaded `theme-package.zip` SHA-256 is
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+The one bounded Chromium lifecycle run used only that ZIP; its durable harness,
+machine result, and concise execution record are respectively:
+
+- `evidence/issue-1549/harness/font-lifecycle-evidence.spec.ts`
+- `evidence/issue-1549/logs/canonical-font-lifecycle.json`
+- `evidence/issue-1549/logs/chromium-font-lifecycle-evidence-e2e-local.log`
+
+It passed immutable font-route and byte-digest checks for WOFF2 SHA-256
+`8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc`, proved that
+the compiler consistently namespaces the face and all references, found the
+namespaced face loaded in `document.fonts`, and recorded computed use plus
+matched cascade rules for `main` and `navigation-rail`. The trusted Actions
+mount had no button in this lifecycle DOM, so its font-isolation assertion was
+not applicable. Presentation screenshots and visual verdicts remain superseded
+pending pass 2.
+
 ## 2026-09-19: semantic-hook redesign checkpoint
 
 **Candidate Jaunder pin:**

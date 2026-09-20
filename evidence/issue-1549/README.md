@@ -15,6 +15,33 @@ candidate. The prior images were deliberately removed because they prove an
 older presentation and artifact; they are not evidence for the current
 candidate.
 
+## Computed font lifecycle repair
+
+Canonical workflow run
+[`35534627075`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35534627075)
+for `579b40a196d60be5c021f9eed9fed28e55f7d936` passed. Its only downloaded
+`theme-package.zip` input was
+`/tmp/theme-package-35534627075/theme-package.zip`, SHA-256
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+
+The focused durable Chromium harness
+[`harness/font-lifecycle-evidence.spec.ts`](harness/font-lifecycle-evidence.spec.ts)
+was temporarily copied to Jaunder, run once, and removed. Its exact successful
+command and execution record are in
+[`logs/chromium-font-lifecycle-evidence-e2e-local.log`](logs/chromium-font-lifecycle-evidence-e2e-local.log);
+the machine assertions are in
+[`logs/canonical-font-lifecycle.json`](logs/canonical-font-lifecycle.json).
+The record proves the immutable `/theme/8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc`
+WOFF2 route and matching bytes, one consistently namespaced `@font-face` and
+all `font-family` references, a loaded namespaced face in `document.fonts`, and
+computed use by both `main` and `navigation-rail`. Its matched-rule capture
+shows Jaunder's `.j-root, .j-root *` base rule alongside the higher-specificity
+semantic-boundary rule that wins. The trusted Actions mount had no button in
+this lifecycle DOM, so no trusted-control font assertion was applicable.
+
+The current visual evidence remains superseded pending pass 2; this focused
+font lifecycle pass makes no new visual verdict.
+
 The checkpoint's immutable Jaunder/workflow pin is
 `bfb02febb81212258aff1c10bbdf5248fa864cc5`. Canonical workflow run
 [`35480319754`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35480319754)
