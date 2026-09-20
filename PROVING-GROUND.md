@@ -1,5 +1,10 @@
 # Proving ground — jaunder-org/jaunder#1549
 
+> **Superseded pending pass 2:** the package-local font-face change changes
+> package bytes. Every retained presentation screenshot and visual verdict in
+> this historical log is superseded, not final approval. Pass 2/3 visual,
+> optional-state, and trusted-controls reruns are deliberately deferred.
+
 This log records only evidence for the current redesigned presentation candidate.
 The historical proof and captures at commit `295c9a8d2d90318f52f94e1427fc86a9dfb0be1c`
 were intentionally removed: they describe an earlier presentation and artifact,
@@ -178,8 +183,10 @@ It passed. The machine result is
 [`chromium-media-bindings-evidence.json`](evidence/issue-1549/logs/chromium-media-bindings-evidence.json),
 the parked command record is
 [`chromium-media-bindings-evidence-e2e-local.log`](evidence/issue-1549/logs/chromium-media-bindings-evidence-e2e-local.log),
-and the retained successful screenshots and exported package are in
-[`media-bindings/`](evidence/issue-1549/media-bindings/).
+and the retained successful screenshots are in
+[`media-bindings/`](evidence/issue-1549/media-bindings/). The exported ZIP is
+generated evidence and is not committed; its SHA-256, exact members, and
+equality/portability facts are retained in the machine JSON.
 
 The result verifies exact served bytes for the package logo, content-addressed
 font, and package default header; each one-entry package header pool; and a

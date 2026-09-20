@@ -115,7 +115,8 @@
     }
   },
   "export": {
-    "path": "media-bindings/exported-portable-package.zip",
+    "artifactRetainedInSource": false,
+    "generatedPath": "media-bindings/exported-portable-package.zip",
     "sha256": "b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4",
     "members": [
       "theme.json",
@@ -127,6 +128,7 @@
     ],
     "manifestSha256": "19a1b6208e6248f17c2b96cc721c81154310b530900f74c07e5bad068a932255",
     "styleSha256": "085eaf65ca817ec71c93802c2ca5d85f26f120550bbf88da63ac87f30d0c13d8",
+    "matchesCanonicalInput": true,
     "ownedMediaEmbedded": false
   }
 }

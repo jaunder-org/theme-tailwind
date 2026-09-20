@@ -1,5 +1,15 @@
 # Issue #1549 evidence status
 
+## Pass 1 supersession notice
+
+The font-face change after final-review pass 1 changes the canonical package
+bytes. **Every retained presentation screenshot and every visual verdict below
+is superseded historical evidence, not final approval.** They remain only as
+machine and review history pending the deliberately deferred pass-2 visual,
+optional-state, and trusted-controls reruns. The focused font lifecycle record
+added for this pass is package/lifecycle evidence only and makes no visual
+verdict.
+
 This directory is reserved for evidence from the current semantic-hook redesign
 candidate. The prior images were deliberately removed because they prove an
 older presentation and artifact; they are not evidence for the current
@@ -165,11 +175,12 @@ The evidence proves exact package logo, content-addressed font, and header
 bytes; each one-entry package pool and a deterministic complete package pool;
 owned logo and header bindings through the supported Media UI; and a mixed
 package/owned pool that resolves both entry types after supported shuffle and
-stays stable without mutation. The retained export at
-[`media-bindings/exported-portable-package.zip`](media-bindings/exported-portable-package.zip)
-is the original package bytes and contains only its six portable package
-members—no instance-local owned Media. Explicit Studio recovery and restoration
-of the custom selection passed.
+stays stable without mutation. The generated export ZIP is intentionally **not retained in source control**.
+Its exact SHA-256, six-member list, manifest/style equality, and portability
+facts are retained in
+[`logs/chromium-media-bindings-evidence.json`](logs/chromium-media-bindings-evidence.json);
+it contained no instance-local owned Media. Explicit Studio recovery and
+restoration of the custom selection passed.
 
 The four retained screenshots in `media-bindings/screenshots/` were inspected:
 **pass** — package default slate/purple header and logo; owned red logo; owned
