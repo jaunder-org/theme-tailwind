@@ -144,6 +144,12 @@
   line-height: 1.75;
 }
 
+[data-jaunder-part="post-body"] a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.125em;
+  text-underline-offset: 0.15em;
+}
+
 /* post-list */
 [data-jaunder-part="post-list"] {
   display: grid;

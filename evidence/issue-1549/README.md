@@ -72,3 +72,38 @@ superseded historical captures, not approval evidence for the repaired package.
 See [`dark-contrast.md`](dark-contrast.md) and its focused lifecycle logs for
 the red/green cascade evidence; a new canonical ZIP and its minimal lifecycle
 run are still required before visual approval.
+
+## Route/visual partition blocker after dark-contrast repair
+
+Canonical workflow run `35523654193` supplied the sole tested ZIP at
+`/tmp/theme-tailwind-dark-contrast-final/theme-package/theme-package.zip`
+(SHA-256 `8e2e8024d480f5c6522ca770cf8984640eb13142f8286773b4068d4e41c6ffc3`).
+The new durable Chromium harness is
+[`harness/final-evidence.spec.ts`](harness/final-evidence.spec.ts). Its first
+final-artifact run is blocked by a Theme accessibility defect, not a harness or
+Jaunder defect: on light Local, Axe WCAG 2.2 reports `link-in-text-block` for
+the known permalink Post body link. The link color `#0369a1` has 2.93:1
+contrast against surrounding `#1a1a19` text (minimum 3:1), and the link has no
+non-color distinction. The exact command, minimal reproduction, and parked
+stdout/stderr/OTEL identities are retained in
+[`logs/chromium-routes-visual-blocker.json`](logs/chromium-routes-visual-blocker.json).
+
+Accordingly this route/visual partition is **not complete** and no final
+screenshots were retained. The passing `dark-contrast.spec.ts` and its evidence
+remain preserved. Owned-Media and explicit header-pool selection remain deferred
+and were not attempted.
+
+## Post-body link repair checkpoint
+
+The blocker is retained above as the red reproduction. The Theme now gives only
+`[data-jaunder-part="post-body"] a` a persistent underline with explicit
+thickness and offset; title, navigation, tag, and trusted-control link
+presentations are unchanged. The durable harness records the computed
+underline, thickness, and offset for the known structured Post-body permalink
+before running Axe. Its ZIP checksum is supplied as
+`THEME_TAILWIND_ZIP_SHA256`, so the subsequent route/visual execution can bind
+the test to the newly downloaded canonical artifact rather than this superseded
+blocker ZIP.
+
+This checkpoint is pending a new canonical workflow artifact and the bounded
+Chromium route/visual run. The prior screenshots remain deliberately removed.
