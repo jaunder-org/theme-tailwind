@@ -79,6 +79,7 @@ test("canonical Tailwind package CSS rewrites and loads its declared Inter font"
     const stylesheetResponse = await publicPage.request.get(new URL(stylesheet!, BASE_URL).href);
     expect(stylesheetResponse.ok()).toBeTruthy();
     const css = await stylesheetResponse.text();
+    expect(css).toContain("font-family:Tailwind Theme Inter");
     const route = css.match(new RegExp(`/theme/${fontDigest}(?=[)\\"'])`))?.[0];
     expect(route).toBe(`/theme/${fontDigest}`);
     const fontResponse = await publicPage.request.get(new URL(route!, BASE_URL).href);
@@ -88,15 +89,47 @@ test("canonical Tailwind package CSS rewrites and loads its declared Inter font"
       await document.fonts.ready;
       const root = document.documentElement;
       const post = document.querySelector('[data-jaunder-part="post"]');
+      const navigationRail = document.querySelector('[data-jaunder-part="navigation-rail"]');
+      const trustedAction = document.querySelector("#j-trusted-post-actions button");
+      const fontFamilyRules = (element: Element | null) => {
+        const matched: { selector: string; fontFamily: string }[] = [];
+        const collect = (rules: CSSRuleList) => {
+          for (const rule of rules) {
+            if (rule instanceof CSSStyleRule && rule.style.fontFamily) {
+              try {
+                if (element?.matches(rule.selectorText))
+                  matched.push({ selector: rule.selectorText, fontFamily: rule.style.fontFamily });
+              } catch {
+                // A browser-specific selector cannot affect this assertion.
+              }
+            } else if ("cssRules" in rule) {
+              collect((rule as CSSGroupingRule).cssRules);
+            }
+          }
+        };
+        for (const sheet of document.styleSheets) {
+          try {
+            collect(sheet.cssRules);
+          } catch {
+            // Cross-origin sheets are not readable; the package sheet is same-origin.
+          }
+        }
+        return matched;
+      };
       const rootFamily = getComputedStyle(root).fontFamily;
       const postFamily = post ? getComputedStyle(post).fontFamily : "";
+      const navigationRailFamily = navigationRail ? getComputedStyle(navigationRail).fontFamily : "";
       const loadedFamily = [...document.fonts]
         .filter((face) => face.status === "loaded")
         .map((face) => face.family)
-        .find((family) => rootFamily.includes(family.replaceAll('"', "")));
+        .find((family) => postFamily.includes(family.replaceAll('"', "")));
       return {
         rootFamily,
         postFamily,
+        navigationRailFamily,
+        trustedActionFamily: trustedAction ? getComputedStyle(trustedAction).fontFamily : null,
+        postMatchedFontFamilyRules: fontFamilyRules(post),
+        navigationRailMatchedFontFamilyRules: fontFamilyRules(navigationRail),
         loadedFamily: loadedFamily ?? null,
         fontCheck: loadedFamily ? document.fonts.check(`16px ${loadedFamily}`) : false,
       };
@@ -104,7 +137,13 @@ test("canonical Tailwind package CSS rewrites and loads its declared Inter font"
     expect(typography.loadedFamily).not.toBeNull();
     expect(typography.fontCheck).toBeTruthy();
     expect(typography.rootFamily).toContain(typography.loadedFamily!.replaceAll('"', ""));
-    expect(typography.postFamily).toBe(typography.rootFamily);
+    expect(typography.postFamily).toContain(typography.loadedFamily!.replaceAll('"', ""));
+    expect(typography.navigationRailFamily).toContain(typography.loadedFamily!.replaceAll('"', ""));
+    expect(typography.postMatchedFontFamilyRules).toEqual(expect.arrayContaining([
+      expect.objectContaining({ selector: expect.stringContaining('[data-jaunder-part="main"]') }),
+    ]));
+    if (typography.trustedActionFamily)
+      expect(typography.trustedActionFamily).not.toContain(typography.loadedFamily!.replaceAll('"', ""));
     Object.assign(result, { stylesheet, rewrittenFontRoute: route, typography });
   } finally {
     await publicContext.close();

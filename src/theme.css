@@ -66,6 +66,11 @@
 }
 
 /* main */
+[data-jaunder-part="main"],
+[data-jaunder-part="main"] * {
+  font-family: "Tailwind Theme Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
 [data-jaunder-part="main"] {
   width: min(64rem, calc(100% - 2rem));
   margin-inline: auto;
@@ -107,6 +112,11 @@
 }
 
 /* navigation-rail */
+[data-jaunder-part="navigation-rail"],
+[data-jaunder-part="navigation-rail"] * {
+  font-family: "Tailwind Theme Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
 [data-jaunder-part="navigation-rail"] {
   color: #334155;
   background: #f8fafc;
