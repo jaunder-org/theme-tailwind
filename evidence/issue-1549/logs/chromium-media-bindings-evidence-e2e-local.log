@@ -1,0 +1,23 @@
+{
+  "command": [
+    "THEME_TAILWIND_ZIP=/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip",
+    "THEME_TAILWIND_ZIP_SHA256=b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4",
+    "THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549",
+    "devtool run -- cargo xtask e2e-local --browser chromium media-bindings-evidence.spec.ts"
+  ],
+  "exit_code": 0,
+  "ok": true,
+  "duration_ms": 214589,
+  "stdout": {
+    "path": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789930653921-469991.out",
+    "bytes": 871,
+    "lines": 18
+  },
+  "stderr": {
+    "path": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789930653921-469991.err",
+    "bytes": 6985,
+    "lines": 51
+  },
+  "otelTrace": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/e2e-local/run-cOQVb3/chromium/capture/otel-traces.jsonl",
+  "temporaryTestRemoved": true
+}

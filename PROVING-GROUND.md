@@ -155,3 +155,45 @@ retained.
 
 The PR remains draft. Owned-Media and explicit pool partition evidence is still
 outside this completed partition and has not been attempted.
+
+## Completed bounded Chromium Media bindings evidence — 2026-09-20
+
+The same canonical workflow artifact from run
+[`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327)
+was used as the only import input:
+`/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip`, SHA-256
+`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`.
+
+The durable `evidence/issue-1549/harness/media-bindings-evidence.spec.ts` was
+copied temporarily to Jaunder `end2end/tests/`, executed, and removed using:
+
+```sh
+THEME_TAILWIND_ZIP=/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip \
+THEME_TAILWIND_ZIP_SHA256=b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4 \
+THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 \
+devtool run -- cargo xtask e2e-local --browser chromium media-bindings-evidence.spec.ts
+```
+
+It passed. The machine result is
+[`chromium-media-bindings-evidence.json`](evidence/issue-1549/logs/chromium-media-bindings-evidence.json),
+the parked command record is
+[`chromium-media-bindings-evidence-e2e-local.log`](evidence/issue-1549/logs/chromium-media-bindings-evidence-e2e-local.log),
+and the retained successful screenshots and exported package are in
+[`media-bindings/`](evidence/issue-1549/media-bindings/).
+
+The result verifies exact served bytes for the package logo, content-addressed
+font, and package default header; each one-entry package header pool; and a
+complete package pool stable without mutation. It verifies distinct Media-UI
+uploads bound as owned logo and header, then a mixed package/owned header pool
+that serves both entry kinds after supported shuffle and remains stable between
+mutations. Export is the original portable package byte-for-byte (SHA-256
+`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`): its six
+package members, manifest, and stylesheet are unchanged and it contains no
+instance-local owned Media. The final explicit Studio recovery and custom-theme
+restoration both passed.
+
+Visual inspection verdict: **pass** — `package-default.png` shows the package
+logo over a slate/purple header; `owned-logo.png` and `owned-header.png` show
+the expected red owned logo and blue owned header; `mixed-pool.png` shows the
+mixed-pool header without visual breakage. This is focused Media-binding proof;
+PR #1 remains draft for final review.

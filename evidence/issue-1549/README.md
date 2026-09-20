@@ -145,3 +145,33 @@ successful screenshots are retained in `final-pairs/` and `final-routes/`.
 
 PR #1 remains draft: owned-Media and explicit pool partition evidence remains
 out of scope and unattempted.
+
+## Completed Chromium Media bindings partition
+
+The bounded Media bindings run used the same sole canonical workflow artifact
+from run [`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327):
+`/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip`, SHA-256
+`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`.
+
+[`harness/media-bindings-evidence.spec.ts`](harness/media-bindings-evidence.spec.ts)
+was temporarily copied into Jaunder and passed under `devtool run -- cargo xtask
+e2e-local --browser chromium media-bindings-evidence.spec.ts`; the temporary
+test was removed afterward. The final machine result is
+[`logs/chromium-media-bindings-evidence.json`](logs/chromium-media-bindings-evidence.json)
+and the parked command/OTEL record is
+[`logs/chromium-media-bindings-evidence-e2e-local.log`](logs/chromium-media-bindings-evidence-e2e-local.log).
+
+The evidence proves exact package logo, content-addressed font, and header
+bytes; each one-entry package pool and a deterministic complete package pool;
+owned logo and header bindings through the supported Media UI; and a mixed
+package/owned pool that resolves both entry types after supported shuffle and
+stays stable without mutation. The retained export at
+[`media-bindings/exported-portable-package.zip`](media-bindings/exported-portable-package.zip)
+is the original package bytes and contains only its six portable package
+members—no instance-local owned Media. Explicit Studio recovery and restoration
+of the custom selection passed.
+
+The four retained screenshots in `media-bindings/screenshots/` were inspected:
+**pass** — package default slate/purple header and logo; owned red logo; owned
+blue header; and mixed-pool presentation have no visual breakage. PR #1 remains
+draft for final review; this completes only the Media bindings checklist item.
