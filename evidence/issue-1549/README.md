@@ -39,6 +39,27 @@ for the minimal reproduction. This stops the matrix rather than papering over
 missing package-header proof. `final-pairs/local-studio-before-light-1440x900.png`
 is a fresh baseline only, not an approved final pair.
 
-No final lifecycle verdict, route matrix, accessibility verdict, browser matrix,
-or visual approval is claimed. The PR remains draft; no tag, release, merge, or
-issue closure occurred.
+Jaunder PR #1597 corrected that blocker at immutable pin
+`bfb02febb81212258aff1c10bbdf5248fa864cc5`.
+
+## Resumed partial evidence
+
+Canonical run
+[`35518923804`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35518923804)
+for `6c12950cd16bb4b61d52673e86aa4ca167fcb714` passed. Its sole downloaded
+input is `/tmp/theme-tailwind-pr1-final-artifact-after-1597/theme-package.zip`,
+SHA-256 `433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce`.
+
+The exact retained harness passes Chromium, Firefox, and WebKit lifecycle and
+two-Post trusted-Actions isolation. Chromium additionally records Local
+continuation, package logo/header, structured long-token rendering, Axe, and
+narrow/reduced-motion checks. The repair history and concise machine-readable
+results are in `logs/`; fresh Local Studio-Before and Theme-After captures are
+in `final-pairs/`.
+
+Visual verdict for the captured Local light pair: **pass** for slate header,
+centered cards, typography, package logo, and narrow reflow. This remains
+partial evidence, not final approval: author/tag/permalink, owned-Media/pools,
+200% scale, focus contrast, and the complete approved visual matrix are not
+recorded. PR #1 remains draft; no tag, release, merge, or issue closure
+occurred.

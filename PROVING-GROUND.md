@@ -80,8 +80,31 @@ The exact minimal reproduction, parked OTEL capture identity, and devtool
 stdout/stderr identities are retained in
 [`evidence/issue-1549/logs/chromium-attempt-3-jaunder-blocker.json`](evidence/issue-1549/logs/chromium-attempt-3-jaunder-blocker.json).
 
-Per the approved outline, final proof stops here. No final visual approval,
-accessibility verdict, Firefox/WebKit matrix, PR-ready transition, tag, release,
-or issue closure is claimed. The PR remains draft. The one retained image,
-`final-pairs/local-studio-before-light-1440x900.png`, is only the fresh Studio
-baseline captured before the blocker and is not a completed visual pair.
+That blocker was corrected by merged Jaunder PR #1597. It remains recorded
+above as the pre-fix reproduction, not as the current result.
+
+## Resumed evidence — 2026-09-20
+
+The final-head canonical run
+[`35518923804`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35518923804)
+for `6c12950cd16bb4b61d52673e86aa4ca167fcb714` passed against immutable Jaunder
+pin `bfb02febb81212258aff1c10bbdf5248fa864cc5`. Its downloaded
+`theme-package.zip` is the sole E2E input at
+`/tmp/theme-tailwind-pr1-final-artifact-after-1597/theme-package.zip`, SHA-256
+`433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce`.
+
+The retained harness now passes the repaired package-header assertion and
+trusted two-Post Actions isolation in Chromium, Firefox, and WebKit. Chromium
+also records the private import/preview/publish/explicit-selection/recovery
+flow, 51-Post Local continuation, package logo/header, structured Markdown
+long token, Axe scan, and 390px/320px/reduced-motion checks. Exact concise
+results and parked capture identities are in `evidence/issue-1549/logs/`.
+
+Fresh Local Studio-Before and Theme-After captures are retained in
+`evidence/issue-1549/final-pairs/`. Visual review verdict: **pass for the
+captured Local light pair** — the custom package applies its slate header,
+centered card composition, typography, and package logo without horizontal
+clipping at the captured narrow viewports. This is not a complete approval:
+the approved author/tag/permalink, owned-Media/pool, exact 200% scale, focus
+contrast, and full visual-pair matrix remain unrecorded. The PR remains draft;
+no tag, release, merge, or issue closure is claimed.

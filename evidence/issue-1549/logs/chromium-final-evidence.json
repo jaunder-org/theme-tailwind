@@ -1,0 +1,12 @@
+{
+  "zipPath": "/tmp/theme-tailwind-pr1-final-artifact-after-1597/theme-package.zip",
+  "zipSha256": "433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce",
+  "checks": [
+    "Studio is trusted and un-themed before import",
+    "private ZIP draft preview is isolated from Studio",
+    "published package explicitly selected publicly",
+    "Local has 51 Posts, package logo/header, Axe clean, 390px and 320px reflow",
+    "Studio remains available for recovery after public selection",
+    "authenticated trusted Actions controls remain visible and isolated"
+  ]
+}

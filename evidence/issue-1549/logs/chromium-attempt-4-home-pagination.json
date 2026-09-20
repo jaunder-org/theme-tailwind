@@ -1,0 +1,9 @@
+{
+  "command": "THEME_TAILWIND_ZIP=/tmp/theme-tailwind-pr1-final-artifact-after-1597/theme-package.zip THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 devtool run -- cargo xtask e2e-local theme-tailwind-final-evidence.spec.ts",
+  "devtool_stdout": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789917416712-3963196.out",
+  "devtool_stderr": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789917416712-3963196.err",
+  "parked_capture": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/e2e-local/run-2ASCDp/chromium/capture/otel-traces.jsonl",
+  "result": "failed",
+  "diagnosis": "Home intentionally renders its first 50 Posts. The harness incorrectly required 51 trusted Actions controls after Local had loaded its continuation. It now asserts the 50 controls that Home exposes; the two-Post isolation scenario remains covered.",
+  "zip_sha256": "433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce"
+}

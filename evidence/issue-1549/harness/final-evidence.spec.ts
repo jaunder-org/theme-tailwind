@@ -221,8 +221,10 @@ test("external Tailwind package final lifecycle, public routes, accessibility, a
   const owner = await page.context().newPage();
   try {
     await goto(owner, "/app", { timeout: firstNav });
+    // Home follows the same intentional 50-Post first-page boundary as Local;
+    // this lane needs two visible owned Posts, not a continuation assertion.
     await expect(owner.getByRole("button", { name: "Actions" })).toHaveCount(
-      51,
+      50,
     );
     await owner.setViewportSize({ width: 390, height: 844 });
     const popover = await openPostActions(owner);
