@@ -442,9 +442,15 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
     await expect(
       publicPage.locator('[data-jaunder-part="post-body"]'),
     ).toBeVisible();
-    await publicPage
-      .locator('[data-jaunder-part="post-body"] a')
-      .click({ trial: true });
+    const zoomLink = publicPage.locator('[data-jaunder-part="post-body"] a');
+    await zoomLink.evaluate((link) =>
+      link.addEventListener("click", (event) => event.preventDefault(), {
+        once: true,
+      }),
+    );
+    await zoomLink.focus();
+    await expect(zoomLink).toBeFocused();
+    await zoomLink.press("Enter");
     await publicPage.screenshot({
       path: join(routes, "tailwind-final-permalink-200pct.png"),
     });

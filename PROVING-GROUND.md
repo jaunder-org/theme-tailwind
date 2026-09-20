@@ -108,3 +108,50 @@ clipping at the captured narrow viewports. This is not a complete approval:
 the approved author/tag/permalink, owned-Media/pool, exact 200% scale, focus
 contrast, and full visual-pair matrix remain unrecorded. The PR remains draft;
 no tag, release, merge, or issue closure is claimed.
+
+## Completed bounded Chromium route/visual evidence — 2026-09-20
+
+Final-head canonical workflow run
+[`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327)
+passed for `9c09e3c0f95c92189091769bfa760913aa035ed9`. The sole downloaded
+`theme-package.zip` input at
+`/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip` has SHA-256
+`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`, equal to
+the presentation-source artifact after the Post-body link fix.
+
+The exact durable `evidence/issue-1549/harness/final-evidence.spec.ts` was
+copied temporarily to Jaunder `end2end/tests/`, then run as:
+
+```sh
+THEME_TAILWIND_ZIP=/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip \
+THEME_TAILWIND_ZIP_SHA256=b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4 \
+THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 \
+devtool run -- cargo xtask e2e-local final-evidence.spec.ts --browser chromium
+```
+
+It passed. The machine result is
+[`chromium-routes-visual-final.json`](evidence/issue-1549/logs/chromium-routes-visual-final.json),
+the successful parked e2e-local output is
+[`chromium-routes-visual-final-e2e-local.log`](evidence/issue-1549/logs/chromium-routes-visual-final-e2e-local.log),
+and the retained capture directories are `final-pairs/` and `final-routes/`.
+The harness-only completion correction replaces a scale-coordinate-sensitive
+trial pointer click with focused native Enter while a one-shot click listener
+prevents external navigation, preserving the 200%-scale operability proof.
+
+The JSON confirms import/preview/publish/selection/recovery, required route and
+state assertions, Axe for Local/author/tag/permalink in light/dark, reduced-motion
+390px plus true-320px containment, 3px focus geometry with 5.93:1 light and
+8.77:1 dark contrast, and exact Chromium 200% scale readability/operability.
+
+Visual inspection covered all 25 retained successful captures. Named verdicts:
+**pass** — Studio Before Local and permalink desktop/390px light/dark baselines;
+**pass** — Theme After Local and permalink desktop/390px pairs (package hero,
+card hierarchy, readable links, and narrow reflow); **pass** — final 390px
+Local, author, tag, and permalink light/dark routes (route headers, cards,
+logo/tags, and hierarchy); **pass** — 200% permalink viewport (expected
+magnification, visible focused permalink, readable content). Failed-run images
+were deleted before this successful run; only these successful screenshots are
+retained.
+
+The PR remains draft. Owned-Media and explicit pool partition evidence is still
+outside this completed partition and has not been attempted.

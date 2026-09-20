@@ -105,5 +105,43 @@ before running Axe. Its ZIP checksum is supplied as
 the test to the newly downloaded canonical artifact rather than this superseded
 blocker ZIP.
 
-This checkpoint is pending a new canonical workflow artifact and the bounded
+This checkpoint was pending a new canonical workflow artifact and the bounded
 Chromium route/visual run. The prior screenshots remain deliberately removed.
+
+## Completed Chromium route/visual partition
+
+Canonical workflow run
+[`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327)
+for final head `9c09e3c0f95c92189091769bfa760913aa035ed9` passed. Its sole downloaded
+`theme-package.zip` input was
+`/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip`, SHA-256
+`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`, matching
+the presentation-source artifact after the link fix.
+
+The durable harness was copied temporarily to Jaunder `end2end/tests/` and the
+sole bounded Chromium run passed via `devtool run -- cargo xtask e2e-local
+final-evidence.spec.ts --browser chromium`. Its concise machine result is
+[`logs/chromium-routes-visual-final.json`](logs/chromium-routes-visual-final.json)
+and its parked successful e2e-local output is
+[`logs/chromium-routes-visual-final-e2e-local.log`](logs/chromium-routes-visual-final-e2e-local.log).
+The harness correction uses native keyboard Enter on the focused 200%-scale link
+with a one-shot prevented navigation; it replaces a scale-coordinate-sensitive
+trial pointer click and retains the actual operability assertion.
+
+The result records successful import/preview/publish/selection/recovery, all
+Local/author/tag/permalink light-and-dark Axe checks, 390px and 320px reduced-motion
+containment, focus geometry and calculated contrast (5.93:1 light, 8.77:1 dark),
+and Chromium page scale 2 with readable and keyboard-operable permalink content.
+
+All 25 successful captures were inspected. Visual verdicts: **pass** for the
+Studio Before Local and permalink baselines in light/dark at desktop and 390px;
+**pass** for the Theme After Local and permalink pairs (slate/purple hero,
+centered bordered cards, readable blue links, and narrow reflow without clipping);
+**pass** for the final 390px Local, author, tag, and permalink light/dark routes
+(the expected route headers, cards, tags, logo, and hierarchy remain legible);
+and **pass** for the 200% permalink viewport (intentionally magnified partial
+viewport with readable content and visible focused permalink). Only these
+successful screenshots are retained in `final-pairs/` and `final-routes/`.
+
+PR #1 remains draft: owned-Media and explicit pool partition evidence remains
+out of scope and unattempted.

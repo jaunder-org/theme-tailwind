@@ -1,0 +1,75 @@
+{
+  "zipPath": "/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip",
+  "zipSha256": "b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4",
+  "checks": [
+    "Studio Before captures use matching Local and known-permalink routes in light and dark",
+    "real ZIP import, private preview, publish, and explicit public selection passed",
+    "Local has 51 Posts/load more plus titled/untitled, summary, avatar, tag, structured Markdown, long token, logo, header, semantic body-link underline/thickness/offset, hooks, and Axe clean",
+    "Local, author, tag, and known permalink pass Axe in light/dark and have final 390x844 captures",
+    "390px and true 320 CSS-pixel document and painted-content containment passed with reduced motion requested",
+    "keyboard focus reached a permalink link with 3px outline and >=3:1 calculated contrast in light/dark",
+    "exact Chromium 200% page scale permalink is visible, readable, operable, and captured",
+    "Studio remains unthemed and usable for recovery after selection"
+  ],
+  "focus": [
+    {
+      "scheme": "light",
+      "focused": true,
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(3, 105, 161)",
+      "surfaceColor": "rgb(255, 255, 255)",
+      "outlineRgb": [
+        3,
+        105,
+        161
+      ],
+      "surfaceRgb": [
+        255,
+        255,
+        255
+      ],
+      "contrast": 5.933638668604332
+    },
+    {
+      "scheme": "dark",
+      "focused": true,
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(125, 211, 252)",
+      "surfaceColor": "rgb(30, 41, 59)",
+      "outlineRgb": [
+        125,
+        211,
+        252
+      ],
+      "surfaceRgb": [
+        30,
+        41,
+        59
+      ],
+      "contrast": 8.773995827899995
+    }
+  ],
+  "containment": [
+    {
+      "viewport": "390x844",
+      "documentWidth": 390,
+      "paintedRight": 382
+    },
+    {
+      "viewport": "320x844",
+      "documentWidth": 320,
+      "paintedRight": 312
+    }
+  ],
+  "bodyLinkDecoration": {
+    "line": "underline",
+    "thickness": "1.8125px",
+    "offset": "2.175px"
+  },
+  "zoom": {
+    "pageScaleFactor": 2,
+    "route": "/~testoperator/2026/09/20/route-proof-title",
+    "readable": true,
+    "operable": true
+  }
+}
