@@ -396,7 +396,7 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
 
     for (const scheme of ["light", "dark"] as const) {
       await visit(known.permalink, scheme, [390, 844]);
-      const focus = await publicPage.evaluate(() => {
+      const focus = await publicPage.evaluate((scheme) => {
         const target = document.querySelector(
           '[data-jaunder-part="post"] a',
         ) as HTMLElement;
@@ -423,7 +423,7 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
             getComputedStyle(surface ?? document.body).backgroundColor,
           ),
         };
-      });
+      }, scheme);
       expect(focus.focused).toBe(true);
       expect(focus.outlineWidth).toBe("3px");
       const contrast = ratio(focus.outlineRgb, focus.surfaceRgb);
