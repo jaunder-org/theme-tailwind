@@ -278,6 +278,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    /* Jaunder's trusted structural rules read these contract variables for
+     * descendants that have no separate Style Contract hook (for example,
+     * active navigation items and sanitized Post-body headings). */
+    --ink: #e2e8f0;
+    --surface-alt: #1e293b;
     color: #e2e8f0;
     background: #0f172a;
   }

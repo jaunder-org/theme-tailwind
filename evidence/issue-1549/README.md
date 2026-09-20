@@ -63,3 +63,12 @@ partial evidence, not final approval: author/tag/permalink, owned-Media/pools,
 200% scale, focus contrast, and the complete approved visual matrix are not
 recorded. PR #1 remains draft; no tag, release, merge, or issue closure
 occurred.
+
+## Dark contrast repair
+
+The current Theme source changes presentation bytes to correct dark Local
+contrast. The retained `final-pairs/` route screenshots above are therefore
+superseded historical captures, not approval evidence for the repaired package.
+See [`dark-contrast.md`](dark-contrast.md) and its focused lifecycle logs for
+the red/green cascade evidence; a new canonical ZIP and its minimal lifecycle
+run are still required before visual approval.
