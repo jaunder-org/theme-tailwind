@@ -44,6 +44,15 @@ body/heading compute to `rgb(226, 232, 240)`, and the harness's Axe scan passes.
 Its package input was `/tmp/theme-tailwind-dark-contrast-local.zip`, SHA-256
 `8e2e8024d480f5c6522ca770cf8984640eb13142f8286773b4068d4e41c6ffc3`.
 
+Canonical workflow run
+[`35523357120`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35523357120)
+passed generation, validation, thumbnail generation, and packaging for commit
+`10db9e754d28e4dcf504f67a8587571ff6a16881`. Its downloaded artifact at
+`/tmp/theme-tailwind-dark-contrast-canonical/theme-package/theme-package.zip`
+has the same SHA-256. The exact canonical ZIP then passed the same lifecycle
+harness; its machine record is
+[`logs/dark-contrast-lifecycle-green-canonical.json`](logs/dark-contrast-lifecycle-green-canonical.json).
+
 The pre-change route screenshots in `final-pairs/` are **superseded** by this
 presentation-byte change. They are retained only as historical evidence; this
 change does not claim the full visual matrix is complete.
