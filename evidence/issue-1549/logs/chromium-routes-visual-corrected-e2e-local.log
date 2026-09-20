@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cargo",
+    "xtask",
+    "e2e-local",
+    "--browser",
+    "chromium",
+    "theme-tailwind-final-evidence.spec.ts"
+  ],
+  "exit_code": 0,
+  "ok": true,
+  "signal": null,
+  "duration_ms": 280291,
+  "stdout": {
+    "path": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789945765441-1660548.out",
+    "bytes": 908,
+    "lines": 18
+  },
+  "stderr": {
+    "path": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789945765441-1660548.err",
+    "bytes": 6998,
+    "lines": 51
+  }
+}

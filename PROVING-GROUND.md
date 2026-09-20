@@ -234,3 +234,38 @@ logo over a slate/purple header; `owned-logo.png` and `owned-header.png` show
 the expected red owned logo and blue owned header; `mixed-pool.png` shows the
 mixed-pool header without visual breakage. This is focused Media-binding proof;
 PR #1 remains draft for final review.
+
+## Corrected final-review pass 2 — 2026-09-20
+
+Corrected Jaunder state-matrix PR #1605 merged at
+`4dce29b3eab6b2622401bafa06257f2936a72217`. A fresh bounded Chromium pass ran
+only against Jaunder `bfb02febb81212258aff1c10bbdf5248fa864cc5` and canonical
+ZIP `c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`:
+
+```sh
+THEME_TAILWIND_ZIP=/tmp/theme-package-35534627075/theme-package.zip \
+THEME_TAILWIND_ZIP_SHA256=c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c \
+THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 \
+devtool run -- cargo xtask e2e-local --browser chromium theme-tailwind-final-evidence.spec.ts
+```
+
+It passed (parked identity `1789945139726-1593056`; concise record
+`evidence/issue-1549/logs/chromium-routes-visual-corrected-e2e-local.log`). The
+fresh machine JSON records the exact corrected real renderer matrix, Tab-based
+focus traversal, Axe/routes, reduced motion, true 320px containment, and 200%
+native Enter activation. Static optional-hook review passes at
+`evidence/issue-1549/static-optional-hook-review.md`; it confirms no layout
+requires avatar, author-handle, or source-attribution and confirms defensive
+source-attribution styling. The harness uses no synthetic optional-hook DOM or
+storage state.
+
+All 25 route/pair captures were replaced and inspected: **pass** for packaged
+Inter, slate/purple card presentation, narrow reflow, focus, and upstream
+recognizability (not pixel identity). Immutable upstream comparison artifacts,
+URLs, tools, and SHA-256 digests are retained in `evidence/issue-1549/README.md`
+and `evidence/issue-1549/upstream/`, from
+`tomowang/hugo-theme-tailwind@d6841f6c9d53155a3245d6472555860f7acb1cd0`.
+
+PR #1 remains draft. No presentation source changed. Remaining work is pass 3
+review/re-review and release-asset installation proof after merge; no release,
+tag, or issue closure is claimed.

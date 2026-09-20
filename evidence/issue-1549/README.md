@@ -213,3 +213,60 @@ The four retained screenshots in `media-bindings/screenshots/` were inspected:
 **pass** — package default slate/purple header and logo; owned red logo; owned
 blue header; and mixed-pool presentation have no visual breakage. PR #1 remains
 draft for final review; this completes only the Media bindings checklist item.
+
+## Corrected final-review pass 2 — 2026-09-20
+
+The corrected state-matrix spec from Jaunder PR #1605 is merged at
+`4dce29b3eab6b2622401bafa06257f2936a72217`. This pass used only immutable
+Jaunder pin `bfb02febb81212258aff1c10bbdf5248fa864cc5` and canonical workflow
+ZIP `/tmp/theme-package-35534627075/theme-package.zip`, verified SHA-256
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+
+The durable corrected harness is
+[`harness/final-evidence.spec.ts`](harness/final-evidence.spec.ts); its fresh
+machine result is
+[`logs/chromium-routes-visual-final.json`](logs/chromium-routes-visual-final.json)
+and parked `devtool` identity is
+[`logs/chromium-routes-visual-corrected-e2e-local.log`](logs/chromium-routes-visual-corrected-e2e-local.log).
+It passed real import, preview, publish, public selection, recovery, route/Axe,
+reduced-motion, true-320, 390, and 200%-scale checks. It records the exact real
+renderer-state JSON: Local and permalink prove present/absent title, summary,
+and tags; Local records continuation before activation; author records its real
+first-page state; tag and both permalinks prove absent continuation; avatar and
+author handle are always present; source attribution is absent without synthetic
+DOM mutation or storage backdoors.
+
+Keyboard proof is native: from a blurred known starting point the harness sends
+Tab and records `/`, `/`, the public Post title link, then the Post-body
+permalink. The resulting public link has a 3px outline and calculated focus
+contrast 4.10:1 light / 8.76:1 dark. At 200% it reaches the same link by Tab and
+activates it using native Enter under a one-shot prevented click listener.
+
+[`static-optional-hook-review.md`](static-optional-hook-review.md) records the
+static CSS/layout review. It finds semantic defensive styling for avatar,
+author-handle, and source-attribution and no structural dependency on any of
+them; source attribution has appropriate muted styling. Verdict: **pass**.
+
+The 25 captures in `final-pairs/` and `final-routes/` were replaced by this
+successful run and inspected. Verdict: **pass** — package Inter renders across
+public semantic boundaries; Studio/Theme Local and permalink pairs retain the
+card/hero hierarchy and responsive reflow; Local, author, tag, and permalink
+390px light/dark routes are legible; the 200% view visibly focuses the keyboard
+link. The upstream reference artifacts are retained in [`upstream/`](upstream/)
+(see exact provenance below). Comparison verdict: **pass for recognizable
+composition, typography, spacing, palette, and responsive card treatment; not
+pixel identity**, as permitted by the Style Contract.
+
+### Immutable upstream comparison provenance
+
+- Source repository/ref: `https://github.com/tomowang/hugo-theme-tailwind/tree/d6841f6c9d53155a3245d6472555860f7acb1cd0`
+- README screenshot source: `https://raw.githubusercontent.com/tomowang/hugo-theme-tailwind/d6841f6c9d53155a3245d6472555860f7acb1cd0/images/screenshot.png`
+  → `upstream/upstream-readme-screenshot.png`, SHA-256 `2acb7c1ceb5e80c78c9dc05a013e1f50823b3912a8e82489c37738e2659a2711`
+- Rendered from a clean detached checkout of that ref with `hugo v0.166.0+extended`,
+  then local Chromium 152 at 1440×900: `upstream/upstream-rendered-home-list-1440x900.png`
+  SHA-256 `718378ccadc81c7b5c782a822178a1adba8fbaad73768887c0ea5661a692c1a4`; and
+  `upstream/upstream-rendered-single-post-1440x900.png` SHA-256
+  `ed6a60983398eaae118aa3c043d7b94e8b47e9d0da789fcdf94459392ad0f0b3`.
+
+PR #1 remains draft. Pass 3/re-review still owns release-asset installation and
+final review/approval; no presentation source was changed in this pass.

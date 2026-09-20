@@ -94,6 +94,7 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
     checks: [],
     focus: [],
     containment: [],
+    rendererStateMatrix: {},
   };
   const check = (name: string) => (result.checks as string[]).push(name);
   const mutation = (endpoint: keyof typeof endpoints) =>
@@ -132,9 +133,8 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
     summaryUpdate.ok(),
     `posts::update failed (${summaryUpdate.status()}): ${await summaryUpdate.text()}`,
   ).toBeTruthy();
-  await createPostViaApi(page, {
+  const untitled = await createPostViaApi(page, {
     body: "Untitled route proof body",
-    tags: ["route-proof"],
   });
   for (let index = 2; index < 51; index += 1)
     await createPostViaApi(page, {
@@ -277,6 +277,9 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
     await expect(
       publicPage.getByRole("button", { name: "Load more" }),
     ).toBeVisible();
+    (result.rendererStateMatrix as Record<string, unknown>)[
+      "local-continuation-before-activation"
+    ] = { route: "/", continuation: 1 };
     await click(publicPage, '[data-jaunder-part="continuation"]');
     await expect(publicPage.locator('[data-jaunder-part="post"]')).toHaveCount(
       51,
@@ -322,12 +325,66 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
         .filter({ hasText: "Untitled route proof body" })
         .locator('[data-jaunder-part="post-title"]'),
     ).toHaveCount(0);
+    const untitledPost = publicPage
+      .locator('[data-jaunder-part="post"]')
+      .filter({ hasText: "Untitled route proof body" });
     await expect(
-      publicPage
-        .locator('[data-jaunder-part="post"]')
-        .filter({ hasText: "Untitled route proof body" })
-        .locator('[data-jaunder-part="post-summary"]'),
+      untitledPost.locator('[data-jaunder-part="post-summary"]'),
     ).toHaveCount(0);
+    await expect(untitledPost.locator('[data-jaunder-part="tag"]')).toHaveCount(
+      0,
+    );
+    const stateFor = async (
+      name: string,
+      route: string,
+      post: typeof knownPost,
+    ) => {
+      const state = {
+        route: name,
+        url: route,
+        title: await post.locator('[data-jaunder-part="post-title"]').count(),
+        summary: await post
+          .locator('[data-jaunder-part="post-summary"]')
+          .count(),
+        tags: await post.locator('[data-jaunder-part="tag"]').count(),
+        avatar: await post.locator('[data-jaunder-part="avatar"]').count(),
+        authorHandle: await post
+          .locator('[data-jaunder-part="author-handle"]')
+          .count(),
+        sourceAttribution: await post
+          .locator('[data-jaunder-part="source-attribution"]')
+          .count(),
+        continuation: await publicPage
+          .locator('[data-jaunder-part="continuation"]')
+          .count(),
+      };
+      (result.rendererStateMatrix as Record<string, unknown>)[name] = state;
+      return state;
+    };
+    const localKnownState = await stateFor("local-known", "/", knownPost);
+    const localUntitledState = await stateFor(
+      "local-untitled",
+      "/",
+      untitledPost,
+    );
+    expect(localKnownState).toMatchObject({
+      title: 1,
+      summary: 1,
+      tags: 1,
+      avatar: 1,
+      authorHandle: 1,
+      sourceAttribution: 0,
+      continuation: 0,
+    });
+    expect(localUntitledState).toMatchObject({
+      title: 0,
+      summary: 0,
+      tags: 0,
+      avatar: 1,
+      authorHandle: 1,
+      sourceAttribution: 0,
+      continuation: 0,
+    });
     for (const hook of semanticHooks)
       await expect(
         publicPage.locator(`[data-jaunder-part="${hook}"]`).first(),
@@ -340,7 +397,69 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
     ).toBeVisible();
     await expectAccessible(publicPage);
     check(
-      "Local has 51 Posts/load more plus titled/untitled, summary, avatar, tag, structured Markdown, long token, logo, header, semantic body-link underline/thickness/offset, hooks, and Axe clean",
+      "Local real renderer states include present/absent title, summary, and tags; always-present avatar/author handle; absent source attribution; and present continuation",
+    );
+
+    await visit(authorPath, "light", [390, 844]);
+    const authorFirst = publicPage
+      .locator('[data-jaunder-part="post"]')
+      .first();
+    expect(
+      await stateFor("author-first-page", authorPath, authorFirst),
+    ).toMatchObject({
+      title: 1,
+      avatar: 1,
+      authorHandle: 1,
+      sourceAttribution: 0,
+      continuation: 1,
+    });
+    await visit(tagPath, "light", [390, 844]);
+    const tagKnown = publicPage
+      .locator('[data-jaunder-part="post"]')
+      .filter({ hasText: "Route proof title" });
+    expect(await stateFor("tag-known", tagPath, tagKnown)).toMatchObject({
+      title: 1,
+      summary: 1,
+      tags: 1,
+      avatar: 1,
+      authorHandle: 1,
+      sourceAttribution: 0,
+      continuation: 0,
+    });
+    await visit(known.permalink, "light", [390, 844]);
+    expect(
+      await stateFor(
+        "permalink-known",
+        known.permalink,
+        publicPage.locator('[data-jaunder-part="post"]'),
+      ),
+    ).toMatchObject({
+      title: 1,
+      summary: 1,
+      tags: 1,
+      avatar: 1,
+      authorHandle: 1,
+      sourceAttribution: 0,
+      continuation: 0,
+    });
+    await visit(untitled.permalink, "light", [390, 844]);
+    expect(
+      await stateFor(
+        "permalink-untitled",
+        untitled.permalink,
+        publicPage.locator('[data-jaunder-part="post"]'),
+      ),
+    ).toMatchObject({
+      title: 0,
+      summary: 0,
+      tags: 0,
+      avatar: 1,
+      authorHandle: 1,
+      sourceAttribution: 0,
+      continuation: 0,
+    });
+    check(
+      "author, tag, and permalink use only real renderer states; tag and permalink prove absent continuation without DOM mutation or storage backdoors",
     );
 
     for (const [routeName, route] of [
@@ -394,26 +513,52 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
       "390px and true 320 CSS-pixel document and painted-content containment passed with reduced motion requested",
     );
 
+    const tabToBodyLink = async () => {
+      await publicPage.evaluate(() =>
+        (document.activeElement as HTMLElement | null)?.blur(),
+      );
+      const target = publicPage.locator('[data-jaunder-part="post-body"] a');
+      const path: string[] = [];
+      for (let step = 0; step < 80; step += 1) {
+        await publicPage.keyboard.press("Tab");
+        const active = await publicPage.evaluate(() => {
+          const element = document.activeElement as HTMLElement | null;
+          return element?.getAttribute("href") ?? element?.tagName ?? null;
+        });
+        path.push(active ?? "null");
+        if (await target.evaluate((link) => document.activeElement === link)) {
+          await publicPage.keyboard.press("Shift+Tab");
+          const reverse = await publicPage.evaluate(() => {
+            const element = document.activeElement as HTMLElement | null;
+            return element?.getAttribute("href") ?? element?.tagName ?? null;
+          });
+          expect(reverse).not.toBe("https://example.invalid");
+          await publicPage.keyboard.press("Tab");
+          await expect(target).toBeFocused();
+          return { target, path, reverse };
+        }
+      }
+      throw new Error(
+        `Tab traversal did not reach the public post-body link: ${path.join(" -> ")}`,
+      );
+    };
     for (const scheme of ["light", "dark"] as const) {
       await visit(known.permalink, scheme, [390, 844]);
-      const focus = await publicPage.evaluate((scheme) => {
-        const target = document.querySelector(
-          '[data-jaunder-part="post"] a',
-        ) as HTMLElement;
-        target.focus();
-        const style = getComputedStyle(target);
+      const { target, path, reverse } = await tabToBodyLink();
+      const focus = await target.evaluate((link) => {
+        const style = getComputedStyle(link);
         const rgb = (value: string) =>
           (value.match(/\d+/g) ?? []).slice(0, 3).map(Number);
-        let surface: Element | null = target.parentElement;
+        let surface: Element | null = link.parentElement;
         while (
           surface &&
-          (getComputedStyle(surface).backgroundColor === "rgba(0, 0, 0, 0)" ||
-            getComputedStyle(surface).backgroundColor === "transparent")
+          ["rgba(0, 0, 0, 0)", "transparent"].includes(
+            getComputedStyle(surface).backgroundColor,
+          )
         )
           surface = surface.parentElement;
         return {
-          scheme,
-          focused: document.activeElement === target,
+          focused: document.activeElement === link,
           outlineWidth: style.outlineWidth,
           outlineColor: style.outlineColor,
           surfaceColor: getComputedStyle(surface ?? document.body)
@@ -423,15 +568,22 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
             getComputedStyle(surface ?? document.body).backgroundColor,
           ),
         };
-      }, scheme);
+      });
       expect(focus.focused).toBe(true);
       expect(focus.outlineWidth).toBe("3px");
       const contrast = ratio(focus.outlineRgb, focus.surfaceRgb);
       expect(contrast).toBeGreaterThanOrEqual(3);
-      (result.focus as unknown[]).push({ ...focus, contrast });
+      (result.focus as unknown[]).push({
+        scheme,
+        traversal: "body blur -> Tab -> Shift+Tab -> Tab",
+        path,
+        reverse,
+        ...focus,
+        contrast,
+      });
     }
     check(
-      "keyboard focus reached a permalink link with 3px outline and >=3:1 calculated contrast in light/dark",
+      "deterministic body-blur then Tab/Shift+Tab traversal reached and returned to the public permalink link with 3px outline and >=3:1 calculated contrast in light/dark",
     );
 
     await visit(known.permalink, "light", [390, 844]);
@@ -443,14 +595,38 @@ test("external Tailwind package final Chromium route, visual, accessibility, foc
       publicPage.locator('[data-jaunder-part="post-body"]'),
     ).toBeVisible();
     const zoomLink = publicPage.locator('[data-jaunder-part="post-body"] a');
-    await zoomLink.evaluate((link) =>
-      link.addEventListener("click", (event) => event.preventDefault(), {
-        once: true,
-      }),
+    await publicPage.evaluate(() =>
+      (document.activeElement as HTMLElement | null)?.blur(),
     );
-    await zoomLink.focus();
+    for (let step = 0; step < 80; step += 1) {
+      await publicPage.keyboard.press("Tab");
+      if (await zoomLink.evaluate((link) => document.activeElement === link))
+        break;
+    }
     await expect(zoomLink).toBeFocused();
-    await zoomLink.press("Enter");
+    await zoomLink.evaluate((link) => {
+      (
+        window as Window & { themeEvidenceActivations?: number }
+      ).themeEvidenceActivations = 0;
+      link.addEventListener(
+        "click",
+        (event) => {
+          event.preventDefault();
+          (
+            window as Window & { themeEvidenceActivations?: number }
+          ).themeEvidenceActivations! += 1;
+        },
+        { once: true },
+      );
+    });
+    await publicPage.keyboard.press("Enter");
+    expect(
+      await zoomLink.evaluate(
+        () =>
+          (window as Window & { themeEvidenceActivations?: number })
+            .themeEvidenceActivations,
+      ),
+    ).toBe(1);
     await publicPage.screenshot({
       path: join(routes, "tailwind-final-permalink-200pct.png"),
     });

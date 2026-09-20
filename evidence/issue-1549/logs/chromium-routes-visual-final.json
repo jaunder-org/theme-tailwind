@@ -1,19 +1,28 @@
 {
-  "zipPath": "/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip",
-  "zipSha256": "b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4",
+  "zipPath": "/tmp/theme-package-35534627075/theme-package.zip",
+  "zipSha256": "c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c",
   "checks": [
     "Studio Before captures use matching Local and known-permalink routes in light and dark",
     "real ZIP import, private preview, publish, and explicit public selection passed",
-    "Local has 51 Posts/load more plus titled/untitled, summary, avatar, tag, structured Markdown, long token, logo, header, semantic body-link underline/thickness/offset, hooks, and Axe clean",
+    "Local real renderer states include present/absent title, summary, and tags; always-present avatar/author handle; absent source attribution; and present continuation",
+    "author, tag, and permalink use only real renderer states; tag and permalink prove absent continuation without DOM mutation or storage backdoors",
     "Local, author, tag, and known permalink pass Axe in light/dark and have final 390x844 captures",
     "390px and true 320 CSS-pixel document and painted-content containment passed with reduced motion requested",
-    "keyboard focus reached a permalink link with 3px outline and >=3:1 calculated contrast in light/dark",
+    "deterministic body-blur then Tab/Shift+Tab traversal reached and returned to the public permalink link with 3px outline and >=3:1 calculated contrast in light/dark",
     "exact Chromium 200% page scale permalink is visible, readable, operable, and captured",
     "Studio remains unthemed and usable for recovery after selection"
   ],
   "focus": [
     {
       "scheme": "light",
+      "traversal": "body blur -> Tab -> Shift+Tab -> Tab",
+      "path": [
+        "/",
+        "/",
+        "/~testoperator/2026/09/20/route-proof-title",
+        "https://example.invalid"
+      ],
+      "reverse": "/~testoperator/2026/09/20/route-proof-title",
       "focused": true,
       "outlineWidth": "3px",
       "outlineColor": "rgb(3, 105, 161)",
@@ -32,6 +41,14 @@
     },
     {
       "scheme": "dark",
+      "traversal": "body blur -> Tab -> Shift+Tab -> Tab",
+      "path": [
+        "/",
+        "/",
+        "/~testoperator/2026/09/20/route-proof-title",
+        "https://example.invalid"
+      ],
+      "reverse": "/~testoperator/2026/09/20/route-proof-title",
       "focused": true,
       "outlineWidth": "3px",
       "outlineColor": "rgb(125, 211, 252)",
@@ -61,6 +78,78 @@
       "paintedRight": 312
     }
   ],
+  "rendererStateMatrix": {
+    "local-continuation-before-activation": {
+      "route": "/",
+      "continuation": 1
+    },
+    "local-known": {
+      "route": "local-known",
+      "url": "/",
+      "title": 1,
+      "summary": 1,
+      "tags": 1,
+      "avatar": 1,
+      "authorHandle": 1,
+      "sourceAttribution": 0,
+      "continuation": 0
+    },
+    "local-untitled": {
+      "route": "local-untitled",
+      "url": "/",
+      "title": 0,
+      "summary": 0,
+      "tags": 0,
+      "avatar": 1,
+      "authorHandle": 1,
+      "sourceAttribution": 0,
+      "continuation": 0
+    },
+    "author-first-page": {
+      "route": "author-first-page",
+      "url": "/~testoperator",
+      "title": 1,
+      "summary": 0,
+      "tags": 0,
+      "avatar": 1,
+      "authorHandle": 1,
+      "sourceAttribution": 0,
+      "continuation": 1
+    },
+    "tag-known": {
+      "route": "tag-known",
+      "url": "/tags/route-proof",
+      "title": 1,
+      "summary": 1,
+      "tags": 1,
+      "avatar": 1,
+      "authorHandle": 1,
+      "sourceAttribution": 0,
+      "continuation": 0
+    },
+    "permalink-known": {
+      "route": "permalink-known",
+      "url": "/~testoperator/2026/09/20/route-proof-title",
+      "title": 1,
+      "summary": 1,
+      "tags": 1,
+      "avatar": 1,
+      "authorHandle": 1,
+      "sourceAttribution": 0,
+      "continuation": 0
+    },
+    "permalink-untitled": {
+      "route": "permalink-untitled",
+      "url": "/~testoperator/2026/09/20/untitled-route-proof-body",
+      "title": 0,
+      "summary": 0,
+      "tags": 0,
+      "avatar": 1,
+      "authorHandle": 1,
+      "sourceAttribution": 0,
+      "continuation": 0
+    }
+  },
   "bodyLinkDecoration": {
     "line": "underline",
     "thickness": "1.8125px",
