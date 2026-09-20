@@ -15,9 +15,11 @@ new version rather than by moving a tag or replacing an existing release.
 
 The `schema` and `style_contract` numbers in `theme.json` are Jaunder
 compatibility versions, not this theme's release version. Theme Package schema 1
-is closed and has no release-version field, so this repository does not smuggle
-one into the manifest. The deterministic ZIP bytes identify the exact artifact;
-the versioned release URL and its tag identify the distribution release.
+and Style Contract 1 were introduced in Jaunder 1.0.0, so Tailwind Theme v1
+requires Jaunder 1.0.0 or later. Schema 1 is closed and has no release-version
+field, so this repository does not smuggle one into the manifest. The
+deterministic ZIP bytes identify the exact artifact; the versioned release URL
+and its tag identify the distribution release.
 
 If Jaunder later needs an installed Theme to expose its release version or to
 participate in update discovery, that requires a separately designed Theme
