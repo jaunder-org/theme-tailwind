@@ -17,6 +17,16 @@ const dark = css.match(
 )?.[1];
 if (!dark) throw new Error("missing dark color-scheme contract");
 requireRule(css, hook, ["color", "background", "border-color"], "light");
+if (
+  !new RegExp(
+    `${hook}\\s*\\{[^}]*color\\s*:\\s*#334155;[^}]*background\\s*:\\s*#e2e8f0;[^}]*border-color\\s*:\\s*#cbd5e1;`,
+    "s",
+  ).test(css)
+) {
+  throw new Error(
+    "light continuation must match upstream slate pagination colors",
+  );
+}
 requireRule(
   css,
   `${hook}:hover`,
@@ -30,6 +40,16 @@ requireRule(
   "light focus-visible",
 );
 requireRule(dark, hook, ["color", "background", "border-color"], "dark");
+if (
+  !new RegExp(
+    `${hook}\\s*\\{[^}]*color\\s*:\\s*#cbd5e1;[^}]*background\\s*:\\s*#374151;[^}]*border-color\\s*:\\s*#4b5563;`,
+    "s",
+  ).test(dark)
+) {
+  throw new Error(
+    "dark continuation must match upstream slate-on-gray pagination colors",
+  );
+}
 requireRule(
   dark,
   `${hook}:hover`,

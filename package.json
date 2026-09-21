@@ -8,7 +8,8 @@
     "check:drift": "node scripts/check-drift.mjs",
     "check:dark-divider": "node scripts/check-dark-divider-contract.mjs",
     "check:continuation": "node scripts/check-continuation-contract.mjs",
-    "check": "npm run check:drift && npm run check:dark-divider && npm run check:continuation"
+    "check:upstream-palette": "node scripts/check-upstream-palette-contract.mjs",
+    "check": "npm run check:drift && npm run check:dark-divider && npm run check:continuation && npm run check:upstream-palette"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.1.13"

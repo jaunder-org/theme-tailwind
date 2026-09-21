@@ -37,18 +37,18 @@
 
 /* continuation */
 [data-jaunder-part="continuation"] {
-  color: #fff;
-  background: #0369a1;
-  border-color: #0369a1;
+  color: #334155;
+  background: #e2e8f0;
+  border-color: #cbd5e1;
 }
 
 [data-jaunder-part="continuation"]:hover {
-  background: #075985;
-  border-color: #075985;
+  background: #cbd5e1;
+  border-color: #94a3b8;
 }
 
 [data-jaunder-part="continuation"]:focus-visible {
-  outline: 3px solid #0284c7;
+  outline: 3px solid #3b82f6;
   outline-offset: 3px;
 }
 
@@ -69,7 +69,7 @@
   display: flex;
   min-height: clamp(14rem, 30vw, 20rem);
   overflow: hidden;
-  background: #334155;
+  background: #374151;
   border-radius: 1rem;
   box-shadow: 0 1.5rem 3rem -2rem rgb(15 23 42 / 60%);
   isolation: isolate;
@@ -124,7 +124,7 @@
 }
 
 [data-jaunder-part="masthead"] :focus-visible {
-  outline: 3px solid #0284c7;
+  outline: 3px solid #3b82f6;
   outline-offset: 3px;
 }
 
@@ -161,16 +161,16 @@
 }
 
 [data-jaunder-part="post"] a {
-  color: #0369a1;
+  color: #1e293b;
   text-decoration: none;
 }
 
 [data-jaunder-part="post"] a:hover {
-  color: #075985;
+  color: #0f172a;
 }
 
 [data-jaunder-part="post"] :focus-visible {
-  outline: 3px solid #0284c7;
+  outline: 3px solid #3b82f6;
   outline-offset: 3px;
 }
 
@@ -224,7 +224,7 @@
 }
 
 [data-jaunder-part="primary-navigation"] :focus-visible {
-  outline: 3px solid #0284c7;
+  outline: 3px solid #3b82f6;
   outline-offset: 3px;
 }
 
@@ -252,7 +252,7 @@
 /* tag */
 [data-jaunder-part="tag"] {
   padding: 0.2rem 0.6rem;
-  background: #e0f2fe;
+  background: #e2e8f0;
   border-radius: 9999px;
 }
 
@@ -264,16 +264,16 @@
 }
 
 [data-jaunder-part="tag-list"] a {
-  color: #0369a1;
+  color: #334155;
   text-decoration: none;
 }
 
 [data-jaunder-part="tag-list"] a:hover {
-  color: #075985;
+  color: #1e293b;
 }
 
 [data-jaunder-part="tag-list"] :focus-visible {
-  outline: 3px solid #0284c7;
+  outline: 3px solid #3b82f6;
   outline-offset: 3px;
 }
 
@@ -323,10 +323,10 @@
      * descendants that have no separate Style Contract hook (for example,
      * active navigation items and sanitized Post-body headings). */
     --ink: #e2e8f0;
-    --line: #475569;
-    --surface-alt: #1e293b;
+    --line: #4b5563;
+    --surface-alt: #374151;
     color: #e2e8f0;
-    background: #0f172a;
+    background: #1f2937;
   }
 
   /* author-handle */
@@ -336,55 +336,55 @@
 
   /* continuation */
   [data-jaunder-part="continuation"] {
-    color: #0f172a;
-    background: #7dd3fc;
-    border-color: #7dd3fc;
+    color: #cbd5e1;
+    background: #374151;
+    border-color: #4b5563;
   }
 
   [data-jaunder-part="continuation"]:hover {
-    background: #bae6fd;
-    border-color: #bae6fd;
+    background: #4b5563;
+    border-color: #6b7280;
   }
 
   [data-jaunder-part="continuation"]:focus-visible {
-    outline-color: #fbbf24;
+    outline-color: #bfdbfe;
   }
 
   /* masthead */
   [data-jaunder-part="masthead"] :focus-visible {
-    outline-color: #fbbf24;
+    outline-color: #bfdbfe;
   }
 
   /* navigation-rail */
   [data-jaunder-part="navigation-rail"] {
     color: #cbd5e1;
-    background: #0f172a;
-    border-color: #334155;
+    background: #1f2937;
+    border-color: #4b5563;
   }
 
   /* navigation-search */
   [data-jaunder-part="navigation-search"] {
-    background: #1e293b;
-    border-color: #475569;
+    background: #374151;
+    border-color: #4b5563;
   }
 
   /* post */
   [data-jaunder-part="post"] {
-    background: #1e293b;
-    border-color: #475569;
+    background: #374151;
+    border-color: #4b5563;
     box-shadow: none;
   }
 
   [data-jaunder-part="post"] a {
-    color: #7dd3fc;
+    color: #e2e8f0;
   }
 
   [data-jaunder-part="post"] a:hover {
-    color: #bae6fd;
+    color: #fff;
   }
 
   [data-jaunder-part="post"] :focus-visible {
-    outline-color: #fbbf24;
+    outline-color: #bfdbfe;
   }
 
   /* post-summary */
@@ -399,11 +399,11 @@
 
   [data-jaunder-part="primary-navigation"] a:hover {
     color: #fff;
-    background: #1e293b;
+    background: #374151;
   }
 
   [data-jaunder-part="primary-navigation"] :focus-visible {
-    outline-color: #fbbf24;
+    outline-color: #bfdbfe;
   }
 
   /* published-time */
@@ -423,19 +423,19 @@
 
   /* tag */
   [data-jaunder-part="tag"] {
-    background: #334155;
+    background: #4b5563;
   }
 
   /* tag-list */
   [data-jaunder-part="tag-list"] a {
-    color: #7dd3fc;
+    color: #e2e8f0;
   }
 
   [data-jaunder-part="tag-list"] a:hover {
-    color: #bae6fd;
+    color: #fff;
   }
 
   [data-jaunder-part="tag-list"] :focus-visible {
-    outline-color: #fbbf24;
+    outline-color: #bfdbfe;
   }
 }
