@@ -1,5 +1,12 @@
 # Issue #1549 evidence status
 
+## Superseded by dark divider presentation change
+
+The dark `--line` Style Contract change and regenerated light/dark previews
+supersede every final visual and artifact-dependent record below. They remain
+historical diagnostics only; a full final evidence matrix must be rerun from the
+new canonical package artifact before this candidate can be accepted.
+
 ## Current final-artifact evidence notice
 
 Canonical workflow run `35546451858` produced ZIP SHA-256

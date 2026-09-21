@@ -12,6 +12,21 @@ navigation, and visible focus styling are generated from pinned Tailwind source.
 It contains no templates, JavaScript, SVG, external runtime resource, wrapper
 selector, or `anchor-name` declaration.
 
+## Previews
+
+The canonical light thumbnail required by Jaunder and its maintained dark-mode
+companion are both 1200×800 PNGs generated from the pinned Jaunder thumbnail
+fixture:
+
+| Light (`preview.png`) | Dark (`preview-dark.png`) |
+| --- | --- |
+| ![Light Tailwind theme preview](preview.png) | ![Dark Tailwind theme preview](preview-dark.png) |
+
+`preview.png` is the canonical package input checked by Jaunder's reusable
+workflow. `preview-dark.png` is repository documentation for the same fixture
+with `prefers-color-scheme: dark`; it is intentionally outside the package
+format and the reusable workflow's light-thumbnail comparison boundary.
+
 ## Compatibility
 
 Tailwind Theme v1 requires Jaunder 1.0.0 or later. Theme Package schema 1 and
@@ -51,10 +66,23 @@ Use the locked dependency graph and repository-local binary; do not use `npx`:
 
 ```sh
 npm ci --ignore-scripts
-npm run generate
-npm run check:drift
-jaunder theme check .
+./node_modules/.bin/tailwindcss --input src/theme.css --output style.css --minify
+node scripts/check-drift.mjs
+node scripts/check-dark-divider-contract.mjs
+"$JAUNDER_BIN" theme check .
+"$JAUNDER_BIN" theme thumbnail . --browser "$JAUNDER_THEME_THUMBNAIL_BROWSER" --output preview.png
+./scripts/generate-dark-preview.sh
+file preview.png preview-dark.png
 ```
+
+Use the bare pinned executables supplied by Jaunder's `theme-thumbnail`
+environment: set `JAUNDER_BIN` to that environment's pinned `jaunder` binary
+and `JAUNDER_THEME_THUMBNAIL_BROWSER` to its pinned Chromium binary. The dark
+script is deterministic: it creates a temporary valid package whose generated
+dark media block always applies, invokes that same browser, and writes only
+`preview-dark.png`. The reusable workflow owns validation and the byte-for-byte
+light `preview.png` comparison; this repository-owned command
+is the explicit maintenance boundary for the dark documentation preview.
 
 `check:drift` regenerates to a temporary file and byte-compares it with the
 committed `style.css`, failing without mutating the working tree when they differ.

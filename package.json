@@ -6,7 +6,8 @@
   "scripts": {
     "generate": "./node_modules/.bin/tailwindcss --input src/theme.css --output style.css --minify",
     "check:drift": "node scripts/check-drift.mjs",
-    "check": "npm run check:drift"
+    "check:dark-divider": "node scripts/check-dark-divider-contract.mjs",
+    "check": "npm run check:drift && npm run check:dark-divider"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.1.13"
