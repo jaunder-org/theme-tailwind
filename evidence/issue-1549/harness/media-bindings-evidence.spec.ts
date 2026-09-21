@@ -94,7 +94,9 @@ test("external Tailwind package Media and explicit header-pool evidence", async 
     mkdir(logs, { recursive: true }),
   ]);
   const zip = await readFile(zipPath!);
-  expect(sha256(zip)).toBe(expectedZipSha256);
+  const inputSha256 = sha256(zip);
+  expect(inputSha256).toBe(expectedZipSha256);
+  const inputMembers = await zipMembers(zipPath!);
   const packageAssets = Object.fromEntries(
     await Promise.all(
       [
@@ -106,8 +108,11 @@ test("external Tailwind package Media and explicit header-pool evidence", async 
     ),
   );
   const result: Record<string, unknown> = {
-    zipPath,
-    zipSha256: sha256(zip),
+    input: {
+      path: zipPath,
+      sha256: inputSha256,
+      members: inputMembers,
+    },
     packageAssets,
     pools: [],
     ownedMedia: {},
@@ -413,24 +418,37 @@ test("external Tailwind package Media and explicit header-pool evidence", async 
       ["-p", exportTarget, "style.css"],
       { encoding: "buffer" },
     );
-    expect(members).toEqual(await zipMembers(zipPath!));
-    expect(Buffer.from(exportedManifest.stdout)).toEqual(
+    const exportSha256 = sha256(exportBytes);
+    const manifestUnchanged = Buffer.from(exportedManifest.stdout).equals(
       await zipMember("theme.json"),
     );
-    expect(Buffer.from(exportedStyle.stdout)).toEqual(
+    const styleUnchanged = Buffer.from(exportedStyle.stdout).equals(
       await zipMember("style.css"),
     );
-    expect(members.some((member) => member.includes("owned-"))).toBeFalsy();
+    const exactMemberListEqualsInput =
+      JSON.stringify(members) === JSON.stringify(inputMembers);
+    const ownedMediaAbsent = !members.some((member) => member.includes("owned-"));
+    const inputDigestEqualsExportDigest = exportSha256 === inputSha256;
+    expect(inputDigestEqualsExportDigest).toBeTruthy();
+    expect(exactMemberListEqualsInput).toBeTruthy();
+    expect(manifestUnchanged).toBeTruthy();
+    expect(styleUnchanged).toBeTruthy();
+    expect(ownedMediaAbsent).toBeTruthy();
     result.export = {
       path: "media-bindings/exported-portable-package.zip",
-      sha256: sha256(exportBytes),
+      sha256: exportSha256,
       members,
-      manifestSha256: sha256(Buffer.from(exportedManifest.stdout)),
-      styleSha256: sha256(Buffer.from(exportedStyle.stdout)),
-      ownedMediaEmbedded: false,
+      policy: {
+        inputDigestEqualsExportDigest,
+        exactMemberListEqualsInput,
+        manifestUnchanged,
+        styleUnchanged,
+        ownedMediaAbsent,
+        portablePackageAssetsAndDefaultsRetained: inputDigestEqualsExportDigest,
+      },
     };
     check(
-      "Studio export contained exactly portable package members and unchanged manifest/style, with no instance-local owned Media",
+      "Studio export matched the input ZIP byte-for-byte, retaining portable package assets/defaults and exact members while excluding instance-local owned Media",
     );
 
     // Prove actual recovery then restore the selected package for the final public state.

@@ -1,14 +1,12 @@
 # Issue #1549 evidence status
 
-## Pass 1 supersession notice
+## Current final-artifact evidence notice
 
-The font-face change after final-review pass 1 changes the canonical package
-bytes. **Every retained presentation screenshot and every visual verdict below
-is superseded historical evidence, not final approval.** They remain only as
-machine and review history pending the deliberately deferred pass-2 visual,
-optional-state, and trusted-controls reruns. The focused font lifecycle record
-added for this pass is package/lifecycle evidence only and makes no visual
-verdict.
+Canonical workflow run `35546451858` produced ZIP SHA-256
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+The current final route, trusted-controls, and Media records in this directory
+are authoritative for that artifact. Records and captures explicitly tied to an
+older ZIP SHA remain as clearly superseded historical diagnostics only.
 
 This directory is reserved for evidence from the current semantic-hook redesign
 candidate. The prior images were deliberately removed because they prove an
@@ -39,8 +37,8 @@ shows Jaunder's `.j-root, .j-root *` base rule alongside the higher-specificity
 semantic-boundary rule that wins. The trusted Actions mount had no button in
 this lifecycle DOM, so no trusted-control font assertion was applicable.
 
-The current visual evidence remains superseded pending pass 2; this focused
-font lifecycle pass makes no new visual verdict.
+This focused font lifecycle pass makes no additional visual verdict; the
+current final-artifact visual records are documented below.
 
 The checkpoint's immutable Jaunder/workflow pin is
 `bfb02febb81212258aff1c10bbdf5248fa864cc5`. Canonical workflow run
@@ -145,7 +143,10 @@ blocker ZIP.
 This checkpoint was pending a new canonical workflow artifact and the bounded
 Chromium route/visual run. The prior screenshots remain deliberately removed.
 
-## Completed Chromium route/visual partition
+## Superseded historical Chromium route/visual partition
+
+The following `b6cdc…` record is retained only as historical diagnostics;
+current final-artifact route evidence uses `c55b502…` below.
 
 Canonical workflow run
 [`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327)
@@ -183,12 +184,12 @@ successful screenshots are retained in `final-pairs/` and `final-routes/`.
 PR #1 remains draft: owned-Media and explicit pool partition evidence remains
 out of scope and unattempted.
 
-## Completed Chromium Media bindings partition
+## Final Chromium Media bindings partition
 
-The bounded Media bindings run used the same sole canonical workflow artifact
-from run [`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327):
-`/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip`, SHA-256
-`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`.
+The bounded Media bindings run used only canonical workflow run
+[`35546451858`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35546451858):
+`/tmp/theme-tailwind-pr1-35546451858.MALPIw/theme-package.zip`, SHA-256
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
 
 [`harness/media-bindings-evidence.spec.ts`](harness/media-bindings-evidence.spec.ts)
 was temporarily copied into Jaunder and passed under `devtool run -- cargo xtask
@@ -199,15 +200,16 @@ and the parked command/OTEL record is
 [`logs/chromium-media-bindings-evidence-e2e-local.log`](logs/chromium-media-bindings-evidence-e2e-local.log).
 
 The evidence proves exact package logo, content-addressed font, and header
-bytes; each one-entry package pool and a deterministic complete package pool;
-owned logo and header bindings through the supported Media UI; and a mixed
-package/owned pool that resolves both entry types after supported shuffle and
-stays stable without mutation. The generated export ZIP is intentionally **not retained in source control**.
-Its exact SHA-256, six-member list, manifest/style equality, and portability
-facts are retained in
-[`logs/chromium-media-bindings-evidence.json`](logs/chromium-media-bindings-evidence.json);
-it contained no instance-local owned Media. Explicit Studio recovery and
-restoration of the custom selection passed.
+bytes; every explicit one-entry package pool and a deterministic complete
+package pool; owned logo and header bindings through the supported Media UI; and
+a mixed package/owned pool that resolves both entry types after supported
+shuffle and stays stable without mutation. The generated export ZIP is
+intentionally **not retained in source control**. Its machine-emitted policy
+asserts input/export whole-ZIP digest equality, exact six-member-list equality,
+unchanged manifest and stylesheet, no instance-local owned Media, and retained
+portable package assets/defaults. Both input and export SHA-256 values are
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+Explicit Studio recovery and restoration of the custom selection passed.
 
 The four retained screenshots in `media-bindings/screenshots/` were inspected:
 **pass** — package default slate/purple header and logo; owned red logo; owned
@@ -239,7 +241,7 @@ DOM mutation or storage backdoors.
 Keyboard proof is native: from a blurred known starting point the harness sends
 Tab and records `/`, `/`, the public Post title link, then the Post-body
 permalink. The resulting public link has a 3px outline and calculated focus
-contrast 4.10:1 light / 8.76:1 dark. At 200% it reaches the same link by Tab and
+contrast 5.93:1 light / 8.77:1 dark. At 200% it reaches the same link by Tab and
 activates it using native Enter under a one-shot prevented click listener.
 
 [`static-optional-hook-review.md`](static-optional-hook-review.md) records the

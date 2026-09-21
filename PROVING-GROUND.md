@@ -1,9 +1,11 @@
 # Proving ground — jaunder-org/jaunder#1549
 
-> **Superseded pending pass 2:** the package-local font-face change changes
-> package bytes. Every retained presentation screenshot and visual verdict in
-> this historical log is superseded, not final approval. Pass 2/3 visual,
-> optional-state, and trusted-controls reruns are deliberately deferred.
+> **Current final-artifact evidence:** canonical workflow run
+> `35546451858` produced ZIP SHA-256
+> `c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+> The current final route, trusted-controls, and Media records are authoritative
+> for that artifact. Only records and captures explicitly identified by an older
+> ZIP SHA are superseded historical diagnostics.
 
 This log records only evidence for the current redesigned presentation candidate.
 The historical proof and captures at commit `295c9a8d2d90318f52f94e1427fc86a9dfb0be1c`
@@ -144,7 +146,10 @@ the approved author/tag/permalink, owned-Media/pool, exact 200% scale, focus
 contrast, and full visual-pair matrix remain unrecorded. The PR remains draft;
 no tag, release, merge, or issue closure is claimed.
 
-## Completed bounded Chromium route/visual evidence — 2026-09-20
+## Superseded historical Chromium route/visual evidence — 2026-09-20
+
+This `b6cdc…` record is retained only for diagnostic history; the current
+final-artifact route proof is the `c55b502…` corrected pass below.
 
 Final-head canonical workflow run
 [`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327)
@@ -191,20 +196,20 @@ retained.
 The PR remains draft. Owned-Media and explicit pool partition evidence is still
 outside this completed partition and has not been attempted.
 
-## Completed bounded Chromium Media bindings evidence — 2026-09-20
+## Final bounded Chromium Media bindings evidence — 2026-09-20
 
-The same canonical workflow artifact from run
-[`35527202327`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35527202327)
-was used as the only import input:
-`/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip`, SHA-256
-`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`.
+Canonical workflow run
+[`35546451858`](https://github.com/jaunder-org/theme-tailwind/actions/runs/35546451858)
+provided the only import input:
+`/tmp/theme-tailwind-pr1-35546451858.MALPIw/theme-package.zip`, SHA-256
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
 
 The durable `evidence/issue-1549/harness/media-bindings-evidence.spec.ts` was
 copied temporarily to Jaunder `end2end/tests/`, executed, and removed using:
 
 ```sh
-THEME_TAILWIND_ZIP=/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip \
-THEME_TAILWIND_ZIP_SHA256=b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4 \
+THEME_TAILWIND_ZIP=/tmp/theme-tailwind-pr1-35546451858.MALPIw/theme-package.zip \
+THEME_TAILWIND_ZIP_SHA256=c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c \
 THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 \
 devtool run -- cargo xtask e2e-local --browser chromium media-bindings-evidence.spec.ts
 ```
@@ -215,25 +220,24 @@ the parked command record is
 [`chromium-media-bindings-evidence-e2e-local.log`](evidence/issue-1549/logs/chromium-media-bindings-evidence-e2e-local.log),
 and the retained successful screenshots are in
 [`media-bindings/`](evidence/issue-1549/media-bindings/). The exported ZIP is
-generated evidence and is not committed; its SHA-256, exact members, and
-equality/portability facts are retained in the machine JSON.
+generated evidence and is not committed.
 
 The result verifies exact served bytes for the package logo, content-addressed
-font, and package default header; each one-entry package header pool; and a
-complete package pool stable without mutation. It verifies distinct Media-UI
+font, package default header, every explicit one-entry package header pool, and
+a complete package pool stable without mutation. It verifies distinct Media-UI
 uploads bound as owned logo and header, then a mixed package/owned header pool
 that serves both entry kinds after supported shuffle and remains stable between
-mutations. Export is the original portable package byte-for-byte (SHA-256
-`b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4`): its six
-package members, manifest, and stylesheet are unchanged and it contains no
-instance-local owned Media. The final explicit Studio recovery and custom-theme
-restoration both passed.
+mutations. Its emitted export policy asserts input/export whole-ZIP digest
+equality, exact member-list equality, unchanged manifest and stylesheet, absent
+owned Media, and retained portable package assets/defaults; input and export
+are both SHA-256 `c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+Explicit Studio recovery and custom-theme restoration passed.
 
 Visual inspection verdict: **pass** — `package-default.png` shows the package
-logo over a slate/purple header; `owned-logo.png` and `owned-header.png` show
-the expected red owned logo and blue owned header; `mixed-pool.png` shows the
-mixed-pool header without visual breakage. This is focused Media-binding proof;
-PR #1 remains draft for final review.
+logo over a slate/purple header; `owned-logo.png` shows the red owned logo;
+`owned-header.png` shows the blue owned header; and `mixed-pool.png` shows the
+mixed-pool header without visual breakage. This is focused final-artifact
+Media-binding proof; PR #1 remains draft for final review.
 
 ## Corrected final-review pass 2 — 2026-09-20
 

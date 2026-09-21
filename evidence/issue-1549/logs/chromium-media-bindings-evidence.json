@@ -1,6 +1,16 @@
 {
-  "zipPath": "/tmp/theme-package-35527202327-40pjxf/download/theme-package.zip",
-  "zipSha256": "b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4",
+  "input": {
+    "path": "/tmp/theme-tailwind-pr1-35546451858.MALPIw/theme-package.zip",
+    "sha256": "c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c",
+    "members": [
+      "theme.json",
+      "style.css",
+      "assets/header-dawn.png",
+      "assets/header-slate.png",
+      "assets/inter-latin-regular.woff2",
+      "assets/tailwind-logo.png"
+    ]
+  },
   "packageAssets": {
     "assets/tailwind-logo.png": "074dc4dba450f534c4101277e3d99223efe86a54ca4e42e9d088a93b80379e45",
     "assets/header-slate.png": "78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc",
@@ -10,7 +20,9 @@
   "pools": [
     {
       "name": "one-entry package pool assets/header-slate.png",
-      "paths": ["assets/header-slate.png"],
+      "paths": [
+        "assets/header-slate.png"
+      ],
       "observed": {
         "url": "/theme/78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc",
         "sha256": "78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc"
@@ -18,7 +30,9 @@
     },
     {
       "name": "one-entry package pool assets/header-dawn.png",
-      "paths": ["assets/header-dawn.png"],
+      "paths": [
+        "assets/header-dawn.png"
+      ],
       "observed": {
         "url": "/theme/657f3b9344837a71fd50d1224cf31158f38534f4d3d96cd570230a334b5ca1dc",
         "sha256": "657f3b9344837a71fd50d1224cf31158f38534f4d3d96cd570230a334b5ca1dc"
@@ -26,7 +40,10 @@
     },
     {
       "name": "complete package pool",
-      "paths": ["assets/header-slate.png", "assets/header-dawn.png"],
+      "paths": [
+        "assets/header-slate.png",
+        "assets/header-dawn.png"
+      ],
       "observed": {
         "url": "/theme/657f3b9344837a71fd50d1224cf31158f38534f4d3d96cd570230a334b5ca1dc",
         "sha256": "657f3b9344837a71fd50d1224cf31158f38534f4d3d96cd570230a334b5ca1dc"
@@ -66,7 +83,7 @@
     "Studio remained un-themed and offers recovery after mixed pool shuffle 1",
     "Studio remained un-themed and offers recovery after mixed pool shuffle 2",
     "mixed package/owned-Media header pool resolved both canonical entry kinds via supported shuffle and remained stable without a mutation",
-    "Studio export contained exactly portable package members and unchanged manifest/style, with no instance-local owned Media",
+    "Studio export matched the input ZIP byte-for-byte, retaining portable package assets/defaults and exact members while excluding instance-local owned Media",
     "explicit Studio recovery and restoration of selected custom package passed"
   ],
   "packageDefaults": {
@@ -75,12 +92,12 @@
       "sha256": "074dc4dba450f534c4101277e3d99223efe86a54ca4e42e9d088a93b80379e45"
     },
     "header": {
-      "url": "/theme/78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc",
-      "sha256": "78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc"
+      "url": "/theme/657f3b9344837a71fd50d1224cf31158f38534f4d3d96cd570230a334b5ca1dc",
+      "sha256": "657f3b9344837a71fd50d1224cf31158f38534f4d3d96cd570230a334b5ca1dc"
     },
-    "stylesheet": "/theme/2c9dc86ca75ff90fa885d53abc3fda84c58fbf6bfe2e839fd36d800235afd82a",
+    "stylesheet": "/theme/5cc5753700edd9f2ffa780452e5c52f6cc3a8a5ab21fe7c20901deaf939934f7",
     "font": {
-      "url": "http://localhost:38247/theme/8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc",
+      "url": "http://localhost:42629/theme/8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc",
       "sha256": "8909904ab6c872eb994093482a88a28eca2cd95912d7b6fecd72103b0dc07edc"
     }
   },
@@ -100,13 +117,13 @@
     "observations": [
       {
         "route": "/",
-        "url": "/theme/78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc",
-        "sha256": "78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc"
+        "url": "/media/upload/b6/1a/b61a4946da6c19872b0759ba63058881e001f28a0da796b17f5b82392e23018d/owned-header-raster.png",
+        "sha256": "b61a4946da6c19872b0759ba63058881e001f28a0da796b17f5b82392e23018d"
       },
       {
         "route": "/",
-        "url": "/media/upload/b6/1a/b61a4946da6c19872b0759ba63058881e001f28a0da796b17f5b82392e23018d/owned-header-raster.png",
-        "sha256": "b61a4946da6c19872b0759ba63058881e001f28a0da796b17f5b82392e23018d"
+        "url": "/theme/78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc",
+        "sha256": "78debae203d2dd1e5a047aa411c1ca1d8bec5534109ebbb4ac028f7c929e86bc"
       }
     ],
     "stable": {
@@ -115,9 +132,8 @@
     }
   },
   "export": {
-    "artifactRetainedInSource": false,
-    "generatedPath": "media-bindings/exported-portable-package.zip",
-    "sha256": "b6cdc828e2a14e3b4c59ba4baa3516d149d19ddc94d46c18a29dc38b7e8634b4",
+    "path": "media-bindings/exported-portable-package.zip",
+    "sha256": "c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c",
     "members": [
       "theme.json",
       "style.css",
@@ -126,9 +142,13 @@
       "assets/inter-latin-regular.woff2",
       "assets/tailwind-logo.png"
     ],
-    "manifestSha256": "19a1b6208e6248f17c2b96cc721c81154310b530900f74c07e5bad068a932255",
-    "styleSha256": "085eaf65ca817ec71c93802c2ca5d85f26f120550bbf88da63ac87f30d0c13d8",
-    "matchesCanonicalInput": true,
-    "ownedMediaEmbedded": false
+    "policy": {
+      "inputDigestEqualsExportDigest": true,
+      "exactMemberListEqualsInput": true,
+      "manifestUnchanged": true,
+      "styleUnchanged": true,
+      "ownedMediaAbsent": true,
+      "portablePackageAssetsAndDefaultsRetained": true
+    }
   }
 }
