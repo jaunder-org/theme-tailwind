@@ -5,7 +5,7 @@ An independent MIT Jaunder Theme Package inspired by the visual language of
 at `d6841f6c9d53155a3245d6472555860f7acb1cd0`. It is not a Hugo theme, fork, or
 sync-compatible derivative. See [NOTICE](NOTICE) for the preserved upstream MIT
 notice, [ASSET-PROVENANCE.md](ASSET-PROVENANCE.md) for package asset licenses, and
-[initial-port verification](docs/initial-port-verification.json) for the retained pre-palette verification baseline.
+[initial-port verification](docs/initial-port-verification.json) for immutable final facts.
 
 The theme uses only Jaunder Style Contract 1 semantic hooks. Its responsive
 centered shell, slate/gray system-dark palette, cards, prose/code treatment,
@@ -128,19 +128,18 @@ import ZIP → preview the private draft → publish → explicitly select the
 published Theme. Importing does not alter public pages; only explicit selection
 does. Do not use repository support files as import input.
 
-## Previous verification baseline
+## Final verification
 
-Presentation source `8831fb7f912948e0b7f60b33f2af1397e1c423f1`, canonical workflow
-[35618737141](https://github.com/jaunder-org/theme-tailwind/actions/runs/35618737141),
-package SHA-256
-`ecb481c62a4a53a3ab5dda1a7f5c138b234433e7edd59becd581f1583c9de30e`, and
-preview SHA-256 values
-`b9708fbbbdaf9a0a77900995c4e637ed7e16f4c1f76a0d05d86642f4936ed6bb` and
-`5ccf0963c755dcaf0111145334772532a95816b89b5fee94075f1044ff7a50d1`
-record the completed pre-palette proving-ground pass. They are retained as
-initial-port history, not asserted as current package or release evidence. The
-verification record will be replaced with the palette revision's canonical
-workflow facts before release.
+The final presentation source is `5a09a5cbf780946d006edaa3ecea5f6691aef3df`.
+Canonical workflow [35664269680](https://github.com/jaunder-org/theme-tailwind/actions/runs/35664269680)
+produced the six-member package SHA-256
+`1b855af86feb8f9c9c365a8b93f7f3e12167a17916820388e990f4f20fc076fa`.
+Light and dark previews are 1200×800 with SHA-256
+`ecfacf17e07d3162f7dd16c1c4a42e07234cfaaa6a366796315305c6c2732e28` and
+`c2f8908753a3365f58f56a97b9e70d4126c42727305b9703628bd865b6ff1fea`.
+The complete durable facts, including the Jaunder runtime, browser outcomes,
+upstream-palette proof, and selection-regression pins, are in the verification
+record.
 
 ## Automation
 

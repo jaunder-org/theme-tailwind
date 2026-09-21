@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "presentationSourceCommit": "8831fb7f912948e0b7f60b33f2af1397e1c423f1",
+  "presentationSourceCommit": "5a09a5cbf780946d006edaa3ecea5f6691aef3df",
   "canonicalPackage": {
-    "sha256": "ecb481c62a4a53a3ab5dda1a7f5c138b234433e7edd59becd581f1583c9de30e",
-    "workflowRun": "35618737141",
+    "sha256": "1b855af86feb8f9c9c365a8b93f7f3e12167a17916820388e990f4f20fc076fa",
+    "workflowRun": "35664269680",
     "members": [
       "theme.json",
       "style.css",
@@ -21,12 +21,12 @@
   },
   "previews": {
     "light": {
-      "sha256": "b9708fbbbdaf9a0a77900995c4e637ed7e16f4c1f76a0d05d86642f4936ed6bb",
+      "sha256": "ecfacf17e07d3162f7dd16c1c4a42e07234cfaaa6a366796315305c6c2732e28",
       "width": 1200,
       "height": 800
     },
     "dark": {
-      "sha256": "5ccf0963c755dcaf0111145334772532a95816b89b5fee94075f1044ff7a50d1",
+      "sha256": "c2f8908753a3365f58f56a97b9e70d4126c42727305b9703628bd865b6ff1fea",
       "width": 1200,
       "height": 800
     }
@@ -65,6 +65,7 @@
     "browserMatrix": true,
     "continuation": true,
     "darkDivider": true,
+    "upstreamPalette": true,
     "visual": true
   }
 }
