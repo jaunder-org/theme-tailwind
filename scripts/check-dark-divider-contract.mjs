@@ -10,5 +10,14 @@ if (!/--line:\s*#6b7280;/.test(dark)) {
     "dark contract must set --line to upstream gray-500 (#6b7280) for 3:1 contrast",
   );
 }
+if (
+  !/\[data-jaunder-part="post"\]\s*\{[^}]*border-color:\s*#6b7280;/s.test(dark)
+) {
+  throw new Error(
+    "dark Post border must use upstream gray-500 (#6b7280) rather than override --line with lower contrast",
+  );
+}
 
-console.log("dark timeline divider contract: --line resolves to #6b7280");
+console.log(
+  "dark timeline divider contract: --line and Post border resolve to #6b7280",
+);
