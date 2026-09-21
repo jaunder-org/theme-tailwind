@@ -22,6 +22,7 @@ jobs:
       - run: npm run check:drift
       - run: node scripts/check-dark-divider-contract.mjs
       - run: node scripts/check-continuation-contract.mjs
+      - run: node scripts/check-upstream-palette-contract.mjs
 
   version:
     name: Validate release version
