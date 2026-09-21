@@ -1,9 +1,0 @@
-{
-  "command": "THEME_TAILWIND_ZIP=/tmp/theme-tailwind-pr1-final-artifact/theme-package.zip THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 devtool run -- cargo xtask e2e-local theme-tailwind-final-evidence.spec.ts",
-  "devtool_stdout": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789866504552-2953523.out",
-  "devtool_stderr": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789866504552-2953523.err",
-  "parked_capture": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/e2e-local/run-E4WVDS/chromium/capture/otel-traces.jsonl",
-  "result": "failed",
-  "diagnosis": "Harness imported into the operator's Author catalog, so an anonymous Local page correctly retained Studio. The harness was corrected to select Site catalog before ZIP import; no Jaunder defect was found.",
-  "zip_sha256": "433ee5e18846f43baf794dbab6d522a9483940ffd9a83cde8f03c0a60c45d5ce"
-}

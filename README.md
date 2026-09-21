@@ -4,7 +4,8 @@ An independent MIT Jaunder Theme Package inspired by the visual language of
 [`tomowang/hugo-theme-tailwind`](https://github.com/tomowang/hugo-theme-tailwind)
 at `d6841f6c9d53155a3245d6472555860f7acb1cd0`. It is not a Hugo theme, fork, or
 sync-compatible derivative. See [NOTICE](NOTICE) for the preserved upstream MIT
-notice and [ASSET-PROVENANCE.md](ASSET-PROVENANCE.md) for package asset licenses.
+notice, [ASSET-PROVENANCE.md](ASSET-PROVENANCE.md) for package asset licenses, and
+[initial-port verification](docs/initial-port-verification.json) for immutable final facts.
 
 The theme uses only Jaunder Style Contract 1 semantic hooks. Its responsive
 centered shell, slate/gray system-dark palette, cards, prose/code treatment,
@@ -18,14 +19,18 @@ The canonical light thumbnail required by Jaunder and its maintained dark-mode
 companion are both 1200×800 PNGs generated from the pinned Jaunder thumbnail
 fixture:
 
-| Light (`preview.png`) | Dark (`preview-dark.png`) |
-| --- | --- |
+| Light (`preview.png`)                        | Dark (`preview-dark.png`)                        |
+| -------------------------------------------- | ------------------------------------------------ |
 | ![Light Tailwind theme preview](preview.png) | ![Dark Tailwind theme preview](preview-dark.png) |
 
 `preview.png` is the canonical package input checked by Jaunder's reusable
 workflow. `preview-dark.png` is repository documentation for the same fixture
 with `prefers-color-scheme: dark`; it is intentionally outside the package
 format and the reusable workflow's light-thumbnail comparison boundary.
+
+## Upstream references
+
+The retained comparison references are [the upstream README screenshot](docs/upstream/upstream-readme-screenshot.png), [rendered list/home](docs/upstream/upstream-rendered-home-list-1440x900.png), and [rendered single Post](docs/upstream/upstream-rendered-single-post-1440x900.png). Their source URLs, fixed upstream ref, and SHA-256 digests are recorded in [the verification record](docs/initial-port-verification.json). They document visual inspiration, not pixel identity or a source dependency.
 
 ## Compatibility
 
@@ -93,6 +98,10 @@ author, tag, and permalink routes in light and dark modes. Include wide, 390px,
 and 320px layouts; keyboard focus; 200% zoom; reduced motion; long content; and
 an authenticated Post Actions menu. This is presentation review, not another
 package format or repository-specific test harness.
+
+## Optional semantic hooks
+
+Optional Style Contract hooks must receive defensive cosmetic styling only: do not make layout, sizing, positioning, or sibling relationships depend on their presence. This theme treats `avatar`, `author-handle`, and `source-attribution` that way; structural layout is rooted in required semantic hooks. Keep selectors rooted at documented `data-jaunder-part` hooks and outside trusted controls.
 
 ## Replace the packaged images
 

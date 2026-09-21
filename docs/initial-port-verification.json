@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "presentationSourceCommit": "ef90f6b45538fed29f85c68db36198d0f1ee69aa",
+  "canonicalPackage": {
+    "sha256": "d163671e224dd8c2674aeb7cae27382798634c4fe86079668142f94475f1ca38",
+    "workflowRun": "35548814195",
+    "members": [
+      "theme.json",
+      "style.css",
+      "assets/header-dawn.png",
+      "assets/header-slate.png",
+      "assets/inter-latin-regular.woff2",
+      "assets/tailwind-logo.png"
+    ]
+  },
+  "jaunder": {
+    "runtimeCommit": "bfb02febb81212258aff1c10bbdf5248fa864cc5",
+    "correctedSpecMerge": "4dce29b3eab6b2622401bafa06257f2936a72217",
+    "durableConformanceMerge": "a55f660310c2389dace20a858fc392dcb387d8d0"
+  },
+  "previews": {
+    "light": {
+      "sha256": "d626df678754fab52a5bc7845d2e226c347a1df0f33c07c079604b4e16691b71",
+      "width": 1200,
+      "height": 800
+    },
+    "dark": {
+      "sha256": "1667326c15c5dfc726cefec30510f1f782e166734f6121b5b0170770b03b01c6",
+      "width": 1200,
+      "height": 800
+    }
+  },
+  "upstream": {
+    "repository": "https://github.com/tomowang/hugo-theme-tailwind",
+    "ref": "d6841f6c9d53155a3245d6472555860f7acb1cd0",
+    "references": [
+      {
+        "source": "https://raw.githubusercontent.com/tomowang/hugo-theme-tailwind/d6841f6c9d53155a3245d6472555860f7acb1cd0/images/screenshot.png",
+        "sha256": "2acb7c1ceb5e80c78c9dc05a013e1f50823b3912a8e82489c37738e2659a2711"
+      },
+      {
+        "source": "https://github.com/tomowang/hugo-theme-tailwind/tree/d6841f6c9d53155a3245d6472555860f7acb1cd0",
+        "sha256": "718378ccadc81c7b5c782a822178a1adba8fbaad73768887c0ea5661a692c1a4"
+      },
+      {
+        "source": "https://github.com/tomowang/hugo-theme-tailwind/tree/d6841f6c9d53155a3245d6472555860f7acb1cd0",
+        "sha256": "ed6a60983398eaae118aa3c043d7b94e8b47e9d0da789fcdf94459392ad0f0b3"
+      }
+    ]
+  },
+  "outcomes": {
+    "lifecycle": true,
+    "routes": true,
+    "states": true,
+    "accessibility": true,
+    "keyboard": true,
+    "font": true,
+    "media": true,
+    "export": true,
+    "trustedControls": true,
+    "browserMatrix": true,
+    "darkDivider": true,
+    "visual": true
+  }
+}
