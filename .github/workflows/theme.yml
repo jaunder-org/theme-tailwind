@@ -21,6 +21,7 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm run check:drift
       - run: node scripts/check-dark-divider-contract.mjs
+      - run: node scripts/check-continuation-contract.mjs
 
   version:
     name: Validate release version

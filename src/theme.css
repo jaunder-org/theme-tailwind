@@ -35,6 +35,23 @@
   border-radius: 9999px;
 }
 
+/* continuation */
+[data-jaunder-part="continuation"] {
+  color: #fff;
+  background: #0369a1;
+  border-color: #0369a1;
+}
+
+[data-jaunder-part="continuation"]:hover {
+  background: #075985;
+  border-color: #075985;
+}
+
+[data-jaunder-part="continuation"]:focus-visible {
+  outline: 3px solid #0284c7;
+  outline-offset: 3px;
+}
+
 /* header-image */
 [data-jaunder-part="header-image"] {
   position: absolute;
@@ -315,6 +332,22 @@
   /* author-handle */
   [data-jaunder-part="author-handle"] {
     color: #cbd5e1;
+  }
+
+  /* continuation */
+  [data-jaunder-part="continuation"] {
+    color: #0f172a;
+    background: #7dd3fc;
+    border-color: #7dd3fc;
+  }
+
+  [data-jaunder-part="continuation"]:hover {
+    background: #bae6fd;
+    border-color: #bae6fd;
+  }
+
+  [data-jaunder-part="continuation"]:focus-visible {
+    outline-color: #fbbf24;
   }
 
   /* masthead */

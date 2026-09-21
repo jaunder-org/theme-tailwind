@@ -74,6 +74,7 @@ npm ci --ignore-scripts
 ./node_modules/.bin/tailwindcss --input src/theme.css --output style.css --minify
 node scripts/check-drift.mjs
 node scripts/check-dark-divider-contract.mjs
+node scripts/check-continuation-contract.mjs
 "$JAUNDER_BIN" theme check .
 "$JAUNDER_BIN" theme thumbnail . --browser "$JAUNDER_THEME_THUMBNAIL_BROWSER" --output preview.png
 ./scripts/generate-dark-preview.sh
