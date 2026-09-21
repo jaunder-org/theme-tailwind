@@ -127,6 +127,18 @@ import ZIP → preview the private draft → publish → explicitly select the
 published Theme. Importing does not alter public pages; only explicit selection
 does. Do not use repository support files as import input.
 
+## Final verification
+
+The final presentation source is `8831fb7f912948e0b7f60b33f2af1397e1c423f1`.
+Canonical workflow [35618737141](https://github.com/jaunder-org/theme-tailwind/actions/runs/35618737141)
+produced the six-member package SHA-256
+`ecb481c62a4a53a3ab5dda1a7f5c138b234433e7edd59becd581f1583c9de30e`.
+Light and dark previews are 1200×800 with SHA-256
+`b9708fbbbdaf9a0a77900995c4e637ed7e16f4c1f76a0d05d86642f4936ed6bb` and
+`5ccf0963c755dcaf0111145334772532a95816b89b5fee94075f1044ff7a50d1`.
+The complete durable facts, including the Jaunder runtime and selection-regression
+pins and browser outcomes, are in the verification record.
+
 ## Automation
 
 The caller workflow runs clean install, generation, and drift checking before it

@@ -1,9 +1,9 @@
 {
   "schema": 1,
-  "presentationSourceCommit": "ef90f6b45538fed29f85c68db36198d0f1ee69aa",
+  "presentationSourceCommit": "8831fb7f912948e0b7f60b33f2af1397e1c423f1",
   "canonicalPackage": {
-    "sha256": "d163671e224dd8c2674aeb7cae27382798634c4fe86079668142f94475f1ca38",
-    "workflowRun": "35548814195",
+    "sha256": "ecb481c62a4a53a3ab5dda1a7f5c138b234433e7edd59becd581f1583c9de30e",
+    "workflowRun": "35618737141",
     "members": [
       "theme.json",
       "style.css",
@@ -16,16 +16,17 @@
   "jaunder": {
     "runtimeCommit": "bfb02febb81212258aff1c10bbdf5248fa864cc5",
     "correctedSpecMerge": "4dce29b3eab6b2622401bafa06257f2936a72217",
-    "durableConformanceMerge": "a55f660310c2389dace20a858fc392dcb387d8d0"
+    "durableConformanceMerge": "a55f660310c2389dace20a858fc392dcb387d8d0",
+    "selectionRegressionMerge": "d1b91f8332a818521f1f5be2e9935e6e0e6ebc97"
   },
   "previews": {
     "light": {
-      "sha256": "d626df678754fab52a5bc7845d2e226c347a1df0f33c07c079604b4e16691b71",
+      "sha256": "b9708fbbbdaf9a0a77900995c4e637ed7e16f4c1f76a0d05d86642f4936ed6bb",
       "width": 1200,
       "height": 800
     },
     "dark": {
-      "sha256": "1667326c15c5dfc726cefec30510f1f782e166734f6121b5b0170770b03b01c6",
+      "sha256": "5ccf0963c755dcaf0111145334772532a95816b89b5fee94075f1044ff7a50d1",
       "width": 1200,
       "height": 800
     }
@@ -58,7 +59,11 @@
     "media": true,
     "export": true,
     "trustedControls": true,
+    "trustedChromium": true,
+    "trustedFirefox": true,
+    "trustedWebkit": true,
     "browserMatrix": true,
+    "continuation": true,
     "darkDivider": true,
     "visual": true
   }
