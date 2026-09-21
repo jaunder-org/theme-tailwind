@@ -1,0 +1,24 @@
+{
+  "command": [
+    "cargo",
+    "xtask",
+    "e2e-local",
+    "--browser",
+    "webkit",
+    "trusted-controls-evidence.spec.ts"
+  ],
+  "exit_code": 0,
+  "ok": true,
+  "signal": null,
+  "duration_ms": 203730,
+  "stdout": {
+    "path": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789948708187-1831129.out",
+    "bytes": 845,
+    "lines": 18
+  },
+  "stderr": {
+    "path": "/home/mdorman/src/jaunder/milestone-22-9/.xtask/run/1789948708187-1831129.err",
+    "bytes": 6923,
+    "lines": 51
+  }
+}

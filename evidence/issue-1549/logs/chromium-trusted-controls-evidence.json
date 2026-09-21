@@ -1,0 +1,33 @@
+{
+  "browser": "chromium",
+  "zipPath": "/tmp/theme-package-35534627075/theme-package.zip",
+  "zipSha256": "c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c",
+  "checks": [
+    "supported Studio import, preview, publish, and explicit custom selection passed",
+    "four owned Posts expose one trusted Actions control each outside trusted chrome",
+    "narrow scrolled fourth-Post menu remains viewport-contained and anchor-adjacent",
+    "native keyboard opens, tabs into, closes, and selects the Actions menu without reload workarounds",
+    "custom Theme surface excludes trusted Actions trigger and menu; immutable Theme stylesheet is loaded only for public presentation",
+    "Studio is unthemed and supported selection recovery restores trusted controls",
+    "anonymous public view has no owner mutation controls"
+  ],
+  "verdict": "pass",
+  "narrowScrollGeometry": {
+    "viewport": {
+      "width": 375,
+      "height": 250
+    },
+    "trigger": {
+      "x": 97,
+      "y": 102.03125,
+      "width": 72,
+      "height": 32
+    },
+    "menu": {
+      "x": 55.28125,
+      "y": 138.03125,
+      "width": 113.71875,
+      "height": 179.65625
+    }
+  }
+}

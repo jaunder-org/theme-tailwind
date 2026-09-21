@@ -270,3 +270,42 @@ pixel identity**, as permitted by the Style Contract.
 
 PR #1 remains draft. Pass 3/re-review still owns release-asset installation and
 final review/approval; no presentation source was changed in this pass.
+
+## Final-review pass 3 — trusted owner controls
+
+The dedicated durable harness
+[`harness/trusted-controls-evidence.spec.ts`](harness/trusted-controls-evidence.spec.ts)
+is separate from the route/visual harness. It used only immutable Jaunder pin
+`bfb02febb81212258aff1c10bbdf5248fa864cc5` and canonical ZIP
+`/tmp/theme-package-35534627075/theme-package.zip`, verified SHA-256
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c`.
+
+Each final run copied that harness temporarily to Jaunder `end2end/tests/`,
+then removed it, with:
+
+```sh
+THEME_TAILWIND_ZIP=/tmp/theme-package-35534627075/theme-package.zip \
+THEME_TAILWIND_ZIP_SHA256=c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c \
+THEME_TAILWIND_EVIDENCE_DIR=/home/mdorman/src/jaunder/theme-tailwind/evidence/issue-1549 \
+devtool run -- cargo xtask e2e-local --browser <chromium|firefox|webkit> trusted-controls-evidence.spec.ts
+```
+
+All three final runs pass: [Chromium JSON](logs/chromium-trusted-controls-evidence.json)
+and [log](logs/chromium-trusted-controls-evidence-e2e-local.log), [Firefox
+JSON](logs/firefox-trusted-controls-evidence.json) and
+[log](logs/firefox-trusted-controls-evidence-e2e-local.log), and [WebKit
+JSON](logs/webkit-trusted-controls-evidence.json) and
+[log](logs/webkit-trusted-controls-evidence-e2e-local.log). Their parked devtool
+identities are respectively `1789947550811-1805873`, `1789947759778-1810666`,
+and `1789947978295-1815603`.
+
+Each machine result proves four owned Posts, a scrolled 375×250 fourth-Post
+control, native Enter/Tab/Escape/Enter History interaction, one trusted action
+per Post in the trusted sibling, Theme-surface exclusion for trigger/menu,
+Studio recovery, and anonymous absence. The recorded narrow geometry is
+anchored directly below its trigger in every engine (Chromium 102.03→138.03px,
+Firefox 109.05→145.05px, WebKit 108.22→144.22px); each menu is within the
+375px viewport. **Verdicts: Chromium pass; Firefox pass; WebKit pass.** No
+screenshot was retained because the machine geometry is the bounded anchoring
+artifact; no historical `433ee` evidence was used. No presentation source or
+Jaunder source changed, and PR #1 remains draft for rereview.

@@ -269,3 +269,26 @@ and `evidence/issue-1549/upstream/`, from
 PR #1 remains draft. No presentation source changed. Remaining work is pass 3
 review/re-review and release-asset installation proof after merge; no release,
 tag, or issue closure is claimed.
+
+## Final-review pass 3 — trusted owner-controls matrix
+
+The exact dedicated harness is
+`evidence/issue-1549/harness/trusted-controls-evidence.spec.ts`, deliberately
+separate from `final-evidence.spec.ts`. Against only canonical ZIP SHA-256
+`c55b502a54851ef5ee0d6210c36a203eb73358b17b96fdea1c8d0b656a6c858c` and Jaunder
+`bfb02febb81212258aff1c10bbdf5248fa864cc5`, these commands passed:
+
+```sh
+devtool run -- cargo xtask e2e-local --browser chromium trusted-controls-evidence.spec.ts
+devtool run -- cargo xtask e2e-local --browser firefox trusted-controls-evidence.spec.ts
+devtool run -- cargo xtask e2e-local --browser webkit trusted-controls-evidence.spec.ts
+```
+
+The complete environment is retained in the harness and evidence README. Final
+machine records are `evidence/issue-1549/logs/{chromium,firefox,webkit}-trusted-controls-evidence.json`;
+parked devtool records use identities `1789947550811-1805873`,
+`1789947759778-1810666`, and `1789947978295-1815603`. **Chromium: pass;
+Firefox: pass; WebKit: pass.** The records cover four owned Posts, scrolled
+narrow anchored menus, native keyboard menu open/close/selection, Theme/trusted
+surface isolation, and Studio recovery. No `433ee` artifact evidence satisfies
+this final matrix; no screenshots were needed beyond the retained geometry.
