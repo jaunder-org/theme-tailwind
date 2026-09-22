@@ -1,0 +1,17 @@
+{
+  "name": "@jaunder-org/theme-tailwind",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Tailwind-authored Jaunder Theme Package source",
+  "scripts": {
+    "generate": "./node_modules/.bin/tailwindcss --input src/theme.css --output style.css --minify",
+    "check:drift": "node scripts/check-drift.mjs",
+    "check:dark-divider": "node scripts/check-dark-divider-contract.mjs",
+    "check:continuation": "node scripts/check-continuation-contract.mjs",
+    "check:upstream-palette": "node scripts/check-upstream-palette-contract.mjs",
+    "check": "npm run check:drift && npm run check:dark-divider && npm run check:continuation && npm run check:upstream-palette"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.1.13"
+  }
+}

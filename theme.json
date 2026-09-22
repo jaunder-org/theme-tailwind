@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "name": "Tailwind",
+  "style_contract": 1,
+  "assets": {
+    "assets/inter-latin-regular.woff2": "font/woff2",
+    "assets/tailwind-logo.png": "image/png",
+    "assets/header-slate.png": "image/png",
+    "assets/header-dawn.png": "image/png"
+  },
+  "defaults": {
+    "logo": "assets/tailwind-logo.png",
+    "header": ["assets/header-slate.png", "assets/header-dawn.png"]
+  }
+}
